@@ -1,15 +1,19 @@
 ---
 title: "Causal Inference for the Social Sciences"
-author: Pablo Geraldo Bastías
-date: "Hilary 2025"
+author: "Pablo Geraldo Bastías (pablo.geraldo@nuffield.ox.ac.uk)"
 format: 
   pdf:
-    number-sections: false
+    number-sections: true
     colorlinks: true
-    #mainfont: "Cormorant Garamond"
+    mainfont: "Crimson Text"
+    monofont: "Crimson Text"
+    sansfont: "Crimson Text"
+    fontsize: 12pt
+margin-left: 2.5cm
+margin-right: 2.5cm
+margin-top: 2cm
+margin-bottom: 2cm
 ---
-
-Instructor: Pablo Geraldo Bastías (pablo.geraldo@nuffield.ox.ac.uk)
 
 University of Oxford - Hilary 2025
 
@@ -37,24 +41,32 @@ The course focuses on the identification and estimation of causal effects, inclu
  
 Basic knowledge of probability and statistics, up to generalized linear models, is a prerequisite, but resources will be provided for those who need to refresh their statistics foundations. It is very likely that you will find the answer to your questions in the appropriate sections of the following books (but feel free to ask me if that’s not the case):
 
-Aronow, P. M., & Miller, B. T. (2019). Foundations of Agnostic Statistics. Cambridge University Press.
+- Aronow, P. M., & Miller, B. T. (2019). Foundations of Agnostic Statistics. Cambridge University Press.
 
-Blackwell, M. (2024). A User’s Guide to Statistical Inference and Regression. Free online: https://mattblackwell.github.io/gov2002-book/ 
+- Blackwell, M. (2024). A User’s Guide to Statistical Inference and Regression. Free online: [https://mattblackwell.github.io/gov2002-book/](https://mattblackwell.github.io/gov2002-book/) 
 
-Shalizi, C. R. (2024). Advanced Data Analysis from an Elementary Point of View. Free online: https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf 
+- Shalizi, C. R. (2024). Advanced Data Analysis from an Elementary Point of View. Free online: [https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf ](https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf)
 
 ## Weekly plan
  
 We will broadly follow this plan, but there would be some adjustments if needed. 
 
-Week 1: Introduction to Potential Outcomes and the experimental ideal
-Week 2: Introduction to the Structural Causal Model and Directed Acyclic Graphs (DAGs)
-Week 3: Selection on observables I (matching, regression, weighting)
-Week 4: As-if-random assignment (instrumental variables and regression discontinuity)
-Week 5: Parallel trends and beyond (difference-in-differences and synthetic control)
-Week 6: Time-varying treatment and confounding, mediation analysis
-Week 7: Disparities, decompositions, and machine learning
-Week 8: Sensitivity analysis and external validity
+
+**Week 1**: Introduction to Potential Outcomes and the experimental ideal
+
+**Week 2**: Introduction to the Structural Causal Model and Directed Acyclic Graphs (DAGs)
+
+**Week 3**: Selection on observables I (matching, regression, weighting)
+
+**Week 4**: As-if-random assignment (instrumental variables and regression discontinuity)
+
+**Week 5**: Parallel trends and beyond (difference-in-differences and synthetic control)
+
+**Week 6**: Time-varying treatment and confounding, mediation analysis
+
+**Week 7**: Disparities, decompositions, and machine learning
+
+**Week 8**: Sensitivity analysis and external validity
 
 ## How to prepare for lectures
 
@@ -70,10 +82,13 @@ Collaboration is encouraged. Work with your classmates, discuss your answers, an
 
 Problem sets can feel long and relatively challenging. Do not wait until the last minute to start them! The ideal would be to work on them through the two-week period as you attend the lectures and do the readings and tutorials. I recommend answering as much as you can during the time given, and submit whatever you have by the deadline. Try your best, but do not lose sleep over a problem set. If you do too little, I will let you know. But it is generally fine to submit an incomplete problem set. 
 
-Problem set 1: handed on January 20th, submit by January 31st
-Problem set 2: handed on February 3rd, submit by February 14th
-Problem set 3: handed on February 17th, submit by February 28th
-Problem set 4: handed on March 3rd, submit by March 14th
+* Problem set 1: handed on January 20th, submit by January 31st
+
+* Problem set 2: handed on February 3rd, submit by February 14th
+
+* Problem set 3: handed on February 17th, submit by February 28th
+
+* Problem set 4: handed on March 3rd, submit by March 14th
 
 For each problem set, you will receive a pdf version and the source code as a .qmd file. You are expected to submit your answers both as a compiled pdf document and include your own .qmd source file (details below).
 
@@ -83,21 +98,21 @@ During the term, students are expected to conduct data pre-processing steps, mod
 
 You will find many free tutorials and books online, targeted at various levels of experience. If you are not familiar with R, or need to improve your proficiency, I recommend the following resources:
 
-Imai, K. (2018). Quantitative Social Science. An Introduction. Princeton University Press
+* Imai, K. (2018). Quantitative Social Science. An Introduction. Princeton University Press
 
-Llaudet, E., and Imai, K. (2023). Data Analysis for Social Science. A Friendly and Practical Introduction, Princeton University Press (more beginner’s friendly than the one above)
+* Llaudet, E., and Imai, K. (2023). Data Analysis for Social Science. A Friendly and Practical Introduction, Princeton University Press (more beginner’s friendly than the one above)
 
-Wickham, H., Çentikaya-Rundel, M., and Grolemund, G. (2023). R for Data Science, 2nd Edition, O’Reilly Media, Free online: https://r4ds.hadley.nz/ 
+* Wickham, H., Çentikaya-Rundel, M., and Grolemund, G. (2023). R for Data Science, 2nd Edition, O’Reilly Media, Free online: [https://r4ds.hadley.nz/](https://r4ds.hadley.nz/) 
 
 If you are proficient in Stata and need to migrate to R, you may find some of these resources useful: see [here](https://www.matthieugomez.com/statar/) and [here](https://www.hertiecodingclub.com/learn/rstudio/stata_to_r/). 
 
-Finally, Quarto. Quarto is a type of document where you can seamlessly write text, code, run your analyses, and get output (tables and plots) directly incorporated. Even more, from the same source code, you can render a pdf document or an html version (like a local website). It is therefore an amazing tool for research and data science, making your work well documented and reproducible. There is a Quarto chapter in the r4ds book (here), and the official documentation is very well explained. To get started go here: https://quarto.org/docs/get-started/hello/rstudio.html 
+Finally, Quarto. Quarto is a type of document where you can seamlessly write text, code, run your analyses, and get output (tables and plots) directly incorporated. Even more, from the same source code, you can render a pdf document or an html version (like a local website). It is therefore an amazing tool for research and data science, making your work well documented and reproducible. There is a Quarto chapter in the r4ds book ([here](https://r4ds.hadley.nz/quarto)), and the official documentation is very well explained. To get started go here: [https://quarto.org/docs/get-started/hello/rstudio.html](https://quarto.org/docs/get-started/hello/rstudio.html)
 
 For the problem sets, we will use Quarto. If you’re familiar with Rmarkdown, it is pretty much the same, but better. If you are not, it’s ok. You can probably get away by just modifying the template I will provide. Notice that Quarto also supports other programming languages, such as Python. You can use them for the problem sets, but no support will be provided. 
 
 ## Using ChatGPT and other Generative AI tools
 
-The University has adopted the Russell Group guidelines for the use of Generative AI in education [here]. Additional resources can be found here and here. Up to date policies on Plagiarism can be found here. 
+The University has adopted the Russell Group guidelines for the use of Generative AI in education [[here](https://russellgroup.ac.uk/media/6137/rg_ai_principles-final.pdf)]. Additional resources can be found [here](https://www.ctl.ox.ac.uk/ai) and [here.](https://www.ox.ac.uk/students/academic/guidance/skills/ai-study) Up to date policies on Plagiarism can be found [here](https://www.ox.ac.uk/students/academic/guidance/skills/plagiarism). 
 
 In general, using ChatGPT or other Generative AI tools in this class is discouraged but not forbidden, under certain limits. If you need help to clean your answers from grammatical and redaction errors, go ahead. If you need help debugging your own code, go ahead. But make sure to add a note indicating if and when you used the help of a Generative AI model, including the type of model you used (ChatGPT, Claude, or any other), and the prompt you asked. 
 
@@ -113,20 +128,21 @@ It is important to write your own code, and to check that it correctly implement
  
 The complete list of readings for this class, organized by topics, can be found here. Here I only list some booksI have found particularly useful to improve my understanding of causal inference.
 
-Angrist, Joshua and Jörn-Steffen Pischke (2009). Mostly Harmless Econometrics. Princeton University Press
-Chernozhukov, V. & Hansen, C. & Kallus, N. & Spindler, M. & Syrgkanis, V. (2024): Applied Causal Inference Powered by ML and AI; arXiv:2403.02467. Free online: https://CausalML-book.org 
+* Angrist, Joshua and Jörn-Steffen Pischke (2009). Mostly Harmless Econometrics. Princeton University Press
 
-Hernan, M., and Robins, J. (2025). Causal Inference. What if. Chapman and Hall/CRC. Free online: https://miguelhernan.org/whatifbook 
+* Chernozhukov, V. & Hansen, C. & Kallus, N. & Spindler, M. & Syrgkanis, V. (2024): Applied Causal Inference Powered by ML and AI; arXiv:2403.02467. Free online: [https://CausalML-book.org](https://CausalML-book.org) 
 
-Huntington-Klein, N. (2022). The Effect: An Introduction to Research Design and Causality (1st edition). Chapman and Hall/CRC. Free online: https://theeffectbook.net/ 
+* Hernan, M., and Robins, J. (2025). Causal Inference. What if. Chapman and Hall/CRC. Free online: [https://miguelhernan.org/whatifbook](https://miguelhernan.org/whatifbook)
 
-Morgan, Stephen L. and Christopher Winship (2014). Counterfactuals and Causal Inference: Methods and Principles for Social Research (2nd edition), Cambridge University Press
+* Huntington-Klein, N. (2022). The Effect: An Introduction to Research Design and Causality (1st edition). Chapman and Hall/CRC. Free online: [https://theeffectbook.net/](https://theeffectbook.net/) 
 
-Pearl, Judea, Madelyn Glymour and Nicholas P. Jewell. 2016. Causal Inference in Statistics.  Wiley
+* Morgan, Stephen L. and Christopher Winship (2014). Counterfactuals and Causal Inference: Methods and Principles for Social Research (2nd edition), Cambridge University Press
 
-Wager, S. (2024). Causal Inference. A Statistical Learning Approach. Free online: https://web.stanford.edu/~swager/causal_inf_book.pdf 
+* Pearl, Judea, Madelyn Glymour and Nicholas P. Jewell. 2016. Causal Inference in Statistics.  Wiley
+
+* Wager, S. (2024). Causal Inference. A Statistical Learning Approach. Free online: [https://web.stanford.edu/~swager/causal_inf_book.pdf](https://web.stanford.edu/~swager/causal_inf_book.pdf)
 
 
 ## Acknowledgments
 
-I have been influenced by a lot of people in my way of thinking about causal inference in general, and in preparing the materials for this class in particular. I first encountered causal inference more than a decade ago (!) during my master’s in the Catholic University of Chile, in an eye-opening class taught by Luis Maldonado. At UCLA, I learn from (in alphabetical order) Onyi Arah Jennie Brand, Erin Hartman, Chad Hazlett, and Rodrigo Pinto. For this class, I am drawing heavily on Chad’s class materials. Here at Oxford, both Richard Breen and Sascha Riaz have generously shared their own materials from previous iterations of this course they taught in Sociology and Political Sciences. 
+I have been influenced by a lot of people in my way of thinking about causal inference in general, and in preparing the materials for this class in particular. I first encountered causal inference more than a decade ago (!) during my master’s in the Catholic University of Chile, in an eye-opening class taught by [Luis Maldonado](https://lmaldona.github.io/). At UCLA, I learn from (in alphabetical order) [Onyi Arah](https://ph.ucla.edu/about/faculty-staff-directory/onyebuchi-arah), [Jennie Brand](https://www.profjenniebrand.com/), [Erin Hartman](https://erinhartman.com/), [Chad Hazlett](https://www.chadhazlett.com/), and [Rodrigo Pinto](https://www.rodrigopinto.net/). For this class, I am drawing heavily on Chad’s class materials. Here at Oxford, both [Richard Breen](https://www.sociology.ox.ac.uk/people/richard-breen) and [Sascha Riaz](https://saschariaz.com/) have generously shared their own materials from previous iterations of this course they taught in Sociology and Political Sciences. 
