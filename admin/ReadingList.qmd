@@ -1,0 +1,60 @@
+---
+title: "Causal Inference for the Social Sciences"
+subtitle: "Reading list"
+author: "Pablo Geraldo Bastías"
+format: 
+  pdf:
+    number-sections: true
+    colorlinks: true
+    mainfont: "Crimson Text"
+    monofont: "Crimson Text"
+    sansfont: "Crimson Text"
+    fontsize: 12pt
+margin-left: 2.5cm
+margin-right: 2.5cm
+margin-top: 2cm
+margin-bottom: 2cm
+---
+
+# Week 1
+
+## Why causal inference?
+
+***Keywords**: theoretical estimand, empirical estimand, estimator, estimate, assumptions* 
+
+Greenland, Sander. 2022. “The Causal Foundations of Applied Probability and Statistics.” Pp. 605–24 in Probabilistic and Causal Inference: The Works of Judea Pearl. Vol. 36. New York, NY, USA: Association for Computing Machinery.
+
+Hernán, Miguel A., John Hsu, and Brian Healy. 2019. “A Second Chance to Get Causal Inference Right: A Classification of Data Science Tasks.” CHANCE 32(1):42–49. doi: 10.1080/09332480.2019.1579578.
+
+Holland, Paul W. 1986. “Statistics and Causal Inference.” Journal of the American Statistical Association 81(396):945–60. doi: 10.2307/2289064.
+
+Imbens, Guido W. 2022. “Causality in Econometrics: Choice vs Chance.” Econometrica 90(6):2541–66. doi: 10.3982/ECTA21204.
+
+Lundberg, Ian, Rebecca Johnson, and Brandon M. Stewart. 2021. “What Is Your Estimand? Defining the Target Quantity Connects Statistical Evidence to Theory.” American Sociological Review 86(3):532–65. doi: 10.1177/00031224211004187.
+
+Mitra, Nandita, Jason Roy, and Dylan Small. 2022. “The Future of Causal Inference.” American Journal of Epidemiology 191(10):1671–76. doi: 10.1093/aje/kwac108.
+
+Ogburn, Elizabeth L., and Ilya Shpitser. 2021. “Causal Modelling: The Two Cultures.” Observational Studies 7(1):179–83.
+
+Pearl, Judea, and Dana Mackenzie. 2019. The Book of Why: The New Science of Cause and Effect. 1st edition. London: Penguin.
+
+## Potential outcomes to hypothesize, Experiments to learn
+
+**Keywords**: potential outcomes, switching equation, treatment effect, SUTVA, consistency, exchangeability, ignorability, independence, identification, randomization, balance, clusters, blocks
+
+Deaton, Angus, and Nancy Cartwright. 2018. “Understanding and Misunderstanding Randomized Controlled Trials.” Social Science & Medicine 210:2–21. doi: 10.1016/j.socscimed.2017.12.005.
+
+Druckman, James N. 2022. Experimental Thinking: A Primer on Social Science Experiments. Cambridge: Cambridge University Press.
+
+Gerber, Alan S., and Donald P. Green. 2012. Field Experiments – Design, Analysis, and Interpretation. Illustrated edition. New York London: W. W. Norton & Company.
+
+Glennerster, Rachel, and Kudzai Takavarasha. 2013. Running Randomized Evaluations: A Practical Guide. Illustrated edition. Princeton, NJ: Princeton University Press.
+
+Kohavi, Ron. 2020. Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing. 1st edition. Cambridge: Cambridge University Press.
+
+Rubin, Donald B. 2008. “For Objective Causal Inference, Design Trumps Analysis.” The Annals of Applied Statistics 2(3):808–40. doi: 10.1214/08-AOAS187.
+
+Senn, Stephen. 2013. “Seven Myths of Randomisation in Clinical Trials.” Statistics in Medicine 32(9):1439–50. doi: 10.1002/sim.5713.
+
+Veltri, Giuseppe. 2023. Designing Online Experiments for the Social Sciences. 1st edition. Los Angeles London New Delhi Singapore Washington DC Melbourne: SAGE Publications Ltd.
+
