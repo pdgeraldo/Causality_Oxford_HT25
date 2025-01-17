@@ -16,6 +16,17 @@ margin-top: 2cm
 margin-bottom: 2cm
 ---
 
+
+For every topic (two each week), we are going to read relevant literature from across the several disciplines (mostly Sociology, Economics, Political Science, Epidemiology, Statistics, and Computer Sciences). Causal inference is an interdisciplinary endeavor, so no single discipline covers all fronts. It may well be the case that the answer to your question has been found somewhere else; but you're not going to find it if you only search inside your disciplinary journals. Also, different disciplines have slightly different ways of explaining and justifying things, and you may find some of them more helpful and illuminating than others. Eventually, I hope you will develop the skill to read across niches and fill in the gaps when background knowledge is taken for granted.
+
+When available, I have included reference textbooks that provide a canonical explanation of the concepts and methods we are covering. To keep up with recent developments, we are also going to read one contemporary review paper every week\footnote{I have also collected some slidedecks or video presentations that are particularly good at explaining a new methods or reviewing recent advances.}. But, since the idea is to obtain a panorama, not only of the state-of-the-art, but also of the genealogy of the ideas we are discussing in this class and the controversies surrounding them, I have included at least one foundational text each week. This has also a pedagogical use. It is not infrequent for concepts to be presented in a rather transparent and intuitive way at the beginning, only to get obfuscated along the way (but also the other way around!).
+
+The remaining weekly readings will include at least one applied article (to see different empirical strategies in action, to have a template of what credible causal inference may look like, and to provide our class discussions with a common ground), one relatively straightforward methodological piece, and a second, more challenging one. It is fine if you don't get everything in the first pass (in fact, it is expected). It is also fine if you need to pause, read again, find a Youtube video explaining the math (especially if it is from [3Blue1Brown](https://www.youtube.com/@3blue1brown/videos)), bring some paper and a pen, and work through some details yourself. 
+
+I have marked with an (\*) (:sparkles:) the texts I expect you to read first, which should help you with the rest of the readings. The references marked as (\*\*) should ideally be read before the weekly lecture.
+
+\newpage
+
 # Week 1
 
 ## Why causal inference?
@@ -40,7 +51,7 @@ Pearl, Judea, and Dana Mackenzie. 2019. The Book of Why: The New Science of Caus
 
 ## Potential outcomes to hypothesize, Experiments to learn
 
-**Keywords**: potential outcomes, switching equation, treatment effect, SUTVA, consistency, exchangeability, ignorability, independence, identification, randomization, balance, clusters, blocks
+***Keywords**: potential outcomes, switching equation, treatment effect, SUTVA, consistency, exchangeability, ignorability, independence, identification, randomization, balance, clusters, blocks*
 
 Deaton, Angus, and Nancy Cartwright. 2018. “Understanding and Misunderstanding Randomized Controlled Trials.” Social Science & Medicine 210:2–21. doi: 10.1016/j.socscimed.2017.12.005.
 
@@ -57,4 +68,6 @@ Rubin, Donald B. 2008. “For Objective Causal Inference, Design Trumps Analysis
 Senn, Stephen. 2013. “Seven Myths of Randomisation in Clinical Trials.” Statistics in Medicine 32(9):1439–50. doi: 10.1002/sim.5713.
 
 Veltri, Giuseppe. 2023. Designing Online Experiments for the Social Sciences. 1st edition. Los Angeles London New Delhi Singapore Washington DC Melbourne: SAGE Publications Ltd.
+
+
 
