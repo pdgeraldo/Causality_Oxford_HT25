@@ -1,0 +1,23 @@
+---
+title: "Problem Set 1"
+author: "Your name here"
+date: last-modified
+format: 
+  pdf:
+    number-sections: true
+---
+
+
+# Potential Outcomes and Experiments
+
+## Answers Exercises from Chapter 1 of Gerber and Green's *Field Experiments*
+
+## Answers Exercises from Chapter 2 of Gerber and Green's *Field Experiments*
+
+## Extra credit: Answer Exercises from Chapter 3 of Gerber and Green's *Field Experiments*
+
+
+\newpage
+
+# Structural Causal Model
+
