@@ -16,8 +16,9 @@ margin-top: 2cm
 margin-bottom: 2cm
 ---
 
+For every topic (two each week), we are going to read relevant literature from across several disciplines (mostly Sociology, Economics, Political Science, Epidemiology, Statistics, and Computer Sciences). Causal inference is an interdisciplinary effort, and no single discipline covers all fronts. Additionally, different disciplines have slightly different ways of explaining and justifying things, and you may find some of them more helpful and illuminating than others. Eventually, I hope you will develop the skill to read across these niches and fill in the gaps when background knowledge is taken for granted.
 
-For every topic (two each week), we are going to read relevant literature from across the several disciplines (mostly Sociology, Economics, Political Science, Epidemiology, Statistics, and Computer Sciences). Causal inference is an interdisciplinary endeavor, so no single discipline covers all fronts. It may well be the case that the answer to your question has been found somewhere else; but you're not going to find it if you only search inside your disciplinary journals. Also, different disciplines have slightly different ways of explaining and justifying things, and you may find some of them more helpful and illuminating than others. Eventually, I hope you will develop the skill to read across niches and fill in the gaps when background knowledge is taken for granted.
+There is another reason why I believe it is important to broaden the spectrum of one's readings. When doing research, you will encounter cases in which the analytical designs you already know are not really suitable for your application. Lacking good examples, you may be tempted to force your analysis into something known. Or, if you're very committed, you're going to find yourself reinventing the wheel. But it may well be the case that the answer to your question has been found somewhere else! You're just not going to find it if you only search inside your disciplinary journals.
 
 When available, I have included reference textbooks that provide a canonical explanation of the concepts and methods we are covering. To keep up with recent developments, we are also going to read one contemporary review paper every week\footnote{I have also collected some slidedecks or video presentations that are particularly good at explaining a new methods or reviewing recent advances.}. But, since the idea is to obtain a panorama, not only of the state-of-the-art, but also of the genealogy of the ideas we are discussing in this class and the controversies surrounding them, I have included at least one foundational text each week. This has also a pedagogical use. It is not infrequent for concepts to be presented in a rather transparent and intuitive way at the beginning, only to get obfuscated along the way (but also the other way around!).
 
@@ -46,8 +47,6 @@ Greenland, Sander. 2022. “The Causal Foundations of Applied Probability and St
 
 Hernán, Miguel A., John Hsu, and Brian Healy. 2019. “A Second Chance to Get Causal Inference Right: A Classification of Data Science Tasks.” CHANCE 32(1):42–49. doi: 10.1080/09332480.2019.1579578.
 
-Holland, Paul W. 1986. “Statistics and Causal Inference.” Journal of the American Statistical Association 81(396):945–60. doi: 10.2307/2289064.
-
 Imbens, Guido W. 2022. “Causality in Econometrics: Choice vs Chance.” Econometrica 90(6):2541–66. doi: 10.3982/ECTA21204.
 
 Mitra, Nandita, Jason Roy, and Dylan Small. 2022. “The Future of Causal Inference.” American Journal of Epidemiology 191(10):1671–76. doi: 10.1093/aje/kwac108.
@@ -64,7 +63,9 @@ Pearl, Judea, and Dana Mackenzie. 2019. The Book of Why: The New Science of Caus
 
 Gerber, Alan S., and Donald P. Green. 2012. Field Experiments – Design, Analysis, and Interpretation. Illustrated edition. New York London: W. W. Norton & Company, Chapters 1-3 (*)
 
-Quadlin, Natasha. 2018. “The Mark of a Woman’s Record: Gender and Academic Performance in Hiring.” American Sociological Review 83(2):331–60. doi: 10.1177/0003122418762291.
+Holland, Paul W. 1986. “Statistics and Causal Inference.” Journal of the American Statistical Association 81(396):945–60. doi: 10.2307/2289064.
+
+Pager, Devah. 2003. “The Mark of a Criminal Record.” American Journal of Sociology 108(5):937–75. doi: 10.1086/374403.
 
 Senn, Stephen. 2013. “Seven Myths of Randomisation in Clinical Trials.” Statistics in Medicine 32(9):1439–50. doi: 10.1002/sim.5713.
 
@@ -84,9 +85,9 @@ Imbens, Guido W., and Donald B. Rubin. 2015. Causal Inference for Statistics, So
 
 Kohavi, Ron. 2020. Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing. 1st edition. Cambridge: Cambridge University Press.
 
-Pager, Devah. 2003. “The Mark of a Criminal Record.” American Journal of Sociology 108(5):937–75. doi: 10.1086/374403.
-
 Pager, Devah, Rebecca Goldstein, Helen Ho, and Bruce Western. 2022. “Criminalizing Poverty: The Consequences of Court Fees in a Randomized Experiment.” American Sociological Review 87(3):529–53. doi: 10.1177/00031224221075783.
+
+Quadlin, Natasha. 2018. “The Mark of a Woman’s Record: Gender and Academic Performance in Hiring.” American Sociological Review 83(2):331–60. doi: 10.1177/0003122418762291.
 
 Rubin, Donald B. 2008. “For Objective Causal Inference, Design Trumps Analysis.” The Annals of Applied Statistics 2(3):808–40. doi: 10.1214/08-AOAS187.
 
@@ -267,7 +268,7 @@ Zubizarreta, José R., Ricardo D. Paredes, and Paul R. Rosenbaum. 2014. “Match
 
 ## Using the side-door: instrumental variables
 
-***Keywords**: instrument, as-if-random, exogeneity, exclusion restriction, monotonicity, homogeneity, principal strata, compilers, local average treatment effect*
+***Keywords**: instrument, as-if-random, exogeneity, exclusion restriction, monotonicity, homogeneity, principal strata, compliers, local average treatment effect*
 
 *Required*
 
@@ -369,7 +370,7 @@ Sekhon, Jasjeet S., and Rocío Titiunik. 2012. “When Natural Experiments Are N
 
 ## Canonical difference-in-differences
 
-***Keywords**: parallel trends, two-way fixed effects, event study, absorbing treatment, heterogeneity, staggered adoption, negative weights, forbidden comparison*
+***Keywords**: parallel trends, no anticipation, two-way fixed effects, event study, absorbing treatment, time-constant unobserved confounding*
 
 *Required*
 
@@ -402,7 +403,7 @@ Tach, Laura, and Allison Dwyer Emory. 2017. “Public Housing Redevelopment, Nei
 
 ## Same same but different: variations and extensions
 
-***Keywords**: matrix completion, trajectory balancing, synthetic control*
+***Keywords**: heterogeneity, staggered adoption, negative weights, forbidden comparison, synthetic control, matrix completion, trajectory balancing*
 
 
 Abadie, Alberto. 2021. “Using Synthetic Controls: Feasibility, Data Requirements, and Methodological Aspects.” Journal of Economic Literature 59(2):391–425. doi: 10.1257/jel.20191450.
