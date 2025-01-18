@@ -20,7 +20,7 @@ For every topic (two each week), we are going to read relevant literature from a
 
 There is another reason why I believe it is important to broaden the spectrum of one's readings. When doing research, you will encounter cases in which the analytical designs you already know are not really suitable for your application. Lacking good examples, you may be tempted to force your analysis into something known. Or, if you're very committed, you're going to find yourself reinventing the wheel. But it may well be the case that the answer to your question has been found somewhere else! You're just not going to find it if you only search inside your disciplinary journals.
 
-When available, I have included reference textbooks that provide a canonical explanation of the concepts and methods we are covering. To keep up with recent developments, we are also going to read one contemporary review paper every week\footnote{I have also collected some slidedecks or video presentations that are particularly good at explaining a new methods or reviewing recent advances.}. But, since the idea is to obtain a panorama, not only of the state-of-the-art, but also of the genealogy of the ideas we are discussing in this class and the controversies surrounding them, I have included at least one foundational text each week. This has also a pedagogical use. It is not infrequent for concepts to be presented in a rather transparent and intuitive way at the beginning, only to get obfuscated along the way (but also the other way around!).
+When available, I have included reference textbooks that provide a canonical explanation of the concepts and methods we are covering. To keep up with recent developments, we are also going to read one contemporary review paper every week. But, since the idea is to obtain a panorama, not only of the state-of-the-art, but also of the genealogy of the ideas we are discussing in this class and the controversies surrounding them, I have included at least one foundational text each week. This has also a pedagogical use. It is not infrequent for concepts to be presented in a rather transparent and intuitive way at the beginning, only to get obfuscated along the way (but also the other way around!).
 
 The remaining weekly readings will include at least one applied article (to see different empirical strategies in action, to have a template of what credible causal inference may look like, and to provide our class discussions with a common ground), one relatively straightforward methodological piece, and a second, more challenging one. It is fine if you don't get everything in the first pass (in fact, it is expected). It is also fine if you need to pause, read again, find a Youtube video explaining the math (especially if it is from [3Blue1Brown](https://www.youtube.com/@3blue1brown/videos)), bring some paper and a pen, and work through some details yourself. 
 
@@ -376,11 +376,13 @@ Sekhon, Jasjeet S., and Rocío Titiunik. 2012. “When Natural Experiments Are N
 
 Angrist, Joshua D., Jorn-steffen Pischke, and Jörn-steffen Pischke. 2009. Mostly Harmless Econometrics – An Empiricist`s Companion. Illustrated edition. Princeton: Princeton University Press, Chapter 5 (until section 5.2) (*)
 
-Liu, Licheng, Ye Wang, and Yiqing Xu. 2024. “A Practical Guide to Counterfactual Estimators for Causal Inference with Time-Series Cross-Sectional Data.” American Journal of Political Science 68(1):160–76. doi: 10.1111/ajps.12723.
+Roth, Jonathan, Pedro H. C. Sant’Anna, Alyssa Bilinski, and John Poe. 2023. “What’s Trending in Difference-in-Differences? A Synthesis of the Recent Econometrics Literature.” Journal of Econometrics 235(2):2218–44. doi: 10.1016/j.jeconom.2023.03.008.
 
 Torche, Florencia, and Catherine Sirois. 2019. “Restrictive Immigration Law and Birth Outcomes of Immigrant Women.” American Journal of Epidemiology 188(1):24–33. doi: 10.1093/aje/kwy218. (**)
 
 *Suggested*
+
+Borusyak, Kirill, Xavier Jaravel, and Jann Spiess. 2024. “Revisiting Event-Study Designs: Robust and Efficient Estimation.” The Review of Economic Studies 91(6):3253–85. doi: 10.1093/restud/rdae007.
 
 Card, David, and Alan Krueger. 1993. Minimum Wages and Employment: A Case Study of the Fast Food Industry in New Jersey and Pennsylvania. w4509. Cambridge, MA: National Bureau of Economic Research. doi: 10.3386/w4509.
 
@@ -390,11 +392,19 @@ Dafoe, Allan. 2018. “Nonparametric Identification of Causal Effects under Temp
 
 Donahue, Samuel Thomas, and Gerard Torrats-Espinosa. 2024. “From the Block to the Beat: How Violence in Officers’ Neighborhoods Influences Racially Biased Policing.” American Journal of Sociology 734296. doi: 10.1086/734296.
 
+Egami, Naoki, and Soichiro Yamauchi. 2023. “Using Multiple Pretreatment Periods to Improve Difference-in-Differences and Staggered Adoption Designs.” Political Analysis 31(2):195–212. doi: 10.1017/pan.2022.8.
+
+Freyaldenhoven, Simon, Christian Hansen, Jorge Pérez Pérez, and Jesse M. Shapiro. 2021. “Visualization, Identification, and Estimation in the Linear Panel Event-Study Design.”
+
+Freyaldenhoven, Simon, Christian Hansen, and Jesse M. Shapiro. 2019. “Pre-Event Trends in the Panel Event-Study Design.” American Economic Review 109(9):3307–38. doi: 10.1257/aer.20180609.
+
 Imai, Kosuke, and In Song Kim. 2019. “When Should We Use Unit Fixed Effects Regression Models for Causal Inference with Longitudinal Data?” American Journal of Political Science 63(2):467–90. doi: 10.1111/ajps.12417.
 
 Legewie, Joscha, and Jeffrey Fagan. 2019. “Aggressive Policing and the Educational Performance of Minority Youth.” American Sociological Review 84(2):220–47. doi: 10.1177/0003122419826020.
 
-Roth, Jonathan, Pedro H. C. Sant’Anna, Alyssa Bilinski, and John Poe. 2023. “What’s Trending in Difference-in-Differences? A Synthesis of the Recent Econometrics Literature.” Journal of Econometrics 235(2):2218–44. doi: 10.1016/j.jeconom.2023.03.008.
+Marcus, Michelle, and Pedro H. C. Sant’Anna. 2021. “The Role of Parallel Trends in Event Study Settings: An Application to Environmental Economics.” Journal of the Association of Environmental and Resource Economists 8(2):235–75. doi: 10.1086/711509.
+
+Miller, Douglas L. 2023. “An Introductory Guide to Event Study Models.” Journal of Economic Perspectives 37(2):203–30. doi: 10.1257/jep.37.2.203.
 
 Rüttenauer, Tobias, and Ozan Aksoy. 2024. “When Can We Use Two-Way Fixed-Effects (TWFE): A Comparison of TWFE and Novel Dynamic Difference-in-Differences Estimators.”
 
@@ -406,44 +416,129 @@ Tach, Laura, and Allison Dwyer Emory. 2017. “Public Housing Redevelopment, Nei
 ***Keywords**: heterogeneity, staggered adoption, negative weights, forbidden comparison, synthetic control, matrix completion, trajectory balancing*
 
 
+*Requried*
+
+Abadie, Alberto, Alexis Diamond, and Jens Hainmueller. 2010. “Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California’s Tobacco Control Program.” Journal of the American Statistical Association 105(490):493–505. doi: 10.1198/jasa.2009.ap08746. (**)
+
+Liu, Licheng, Ye Wang, and Yiqing Xu. 2024. “A Practical Guide to Counterfactual Estimators for Causal Inference with Time-Series Cross-Sectional Data.” American Journal of Political Science 68(1):160–76. doi: 10.1111/ajps.12723.(*)
+
+*Suggested*
+
 Abadie, Alberto. 2021. “Using Synthetic Controls: Feasibility, Data Requirements, and Methodological Aspects.” Journal of Economic Literature 59(2):391–425. doi: 10.1257/jel.20191450.
 
-Abadie, Alberto, Alexis Diamond, and Jens Hainmueller. 2010. “Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California’s Tobacco Control Program.” Journal of the American Statistical Association 105(490):493–505. doi: 10.1198/jasa.2009.ap08746.
+Abadie, Alberto, Susan Athey, Guido W. Imbens, and Jeffrey M. Wooldridge. 2023. “When Should You Adjust Standard Errors for Clustering?” The Quarterly Journal of Economics 138(1):1–35. doi: 10.1093/qje/qjac038.
+
+Abadie, Alberto, Alexis Diamond, and Jens Hainmueller. 2015. “Comparative Politics and the Synthetic Control Method.” American Journal of Political Science 59(2):495–510. doi: 10.1111/ajps.12116.
 
 Arkhangelsky, Dmitry, Susan Athey, David A. Hirshberg, Guido W. Imbens, and Stefan Wager. 2021. “Synthetic Difference-in-Differences.” American Economic Review 111(12):4088–4118. doi: 10.1257/aer.20190159.
 
+Athey, Susan, Mohsen Bayati, Nikolay Doudchenko, Guido Imbens, and Khashayar Khosravi. 2021. “Matrix Completion Methods for Causal Panel Data Models.” Journal of the American Statistical Association 116(536):1716–30. doi: 10.1080/01621459.2021.1891924.
+
+Ben-Michael, Eli, Avi Feller, and Jesse Rothstein. 2021. “The Augmented Synthetic Control Method.” Journal of the American Statistical Association 116(536):1789–1803. doi: 10.1080/01621459.2021.1929245.
+
+Callaway, Brantly, and Pedro H. C. Sant’Anna. 2021. “Difference-in-Differences with Multiple Time Periods.” Journal of Econometrics 225(2):200–230. doi: 10.1016/j.jeconom.2020.12.001.
+
+Cengiz, Doruk, Arindrajit Dube, Attila Lindner, and Ben Zipperer. 2019. “The Effect of Minimum Wages on Low-Wage Jobs*.” The Quarterly Journal of Economics 134(3):1405–54. doi: 10.1093/qje/qjz014.
+
+de Chaisemartin, Clément, and Xavier D’Haultfœuille. 2020. “Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects.” American Economic Review 110(9):2964–96. doi: 10.1257/aer.20181169.
+
+Dettmann, Eva, Alexander Giebler, and Antje Weyh. 2020. “Flexpaneldid: A Stata Toolbox for Causal Analysis with Varying Treatment Time and Duration.”
+
+Doudchenko, Nikolay, and Guido W. Imbens. 2016. “Balancing, Regression, Difference-In-Differences and Synthetic Control Methods: A Synthesis.”
+
+Goodman-Bacon, Andrew. 2021. “Difference-in-Differences with Variation in Treatment Timing.” Journal of Econometrics 225(2):254–77. doi: 10.1016/j.jeconom.2021.03.014.
+
 Hazlett, Chad, and Yiqing Xu. 2018. “Trajectory Balancing: A General Reweighting Approach to Causal Inference With Time-Series Cross-Sectional Data.”
 
+Marx, Philip, Elie Tamer, and Xun Tang. 2024. “Parallel Trends and Dynamic Choices.” Journal of Political Economy Microeconomics 2(1):129–71. doi: 10.1086/727363.
+
+Rambachan, Ashesh, and Jonathan Roth. 2023. “A More Credible Approach to Parallel Trends.” The Review of Economic Studies 90(5):2555–91. doi: 10.1093/restud/rdad018.
+
+Roth, Jonathan. 2022. “Pretest with Caution: Event-Study Estimates after Testing for Parallel Trends.” American Economic Review: Insights 4(3):305–22. doi: 10.1257/aeri.20210236.
+
+Roth, Jonathan, and Pedro H. C. Sant’Anna. 2023. “Efficient Estimation for Staggered Rollout Designs.” Journal of Political Economy Microeconomics 1(4):669–709. doi: 10.1086/726581.
+
+Sant’Anna, Pedro H. C., and Jun Zhao. 2020. “Doubly Robust Difference-in-Differences Estimators.” Journal of Econometrics 219(1):101–22. doi: 10.1016/j.jeconom.2020.06.003.
+
 Shen, Dennis, Peng Ding, Jasjeet Sekhon, and Bin Yu. 2023. “Same Root Different Leaves: Time Series and Cross-Sectional Methods in Panel Data.” Econometrica 91(6):2125–54. doi: 10.3982/ECTA21248.
+
+Sun, Liyang, and Sarah Abraham. 2021. “Estimating Dynamic Treatment Effects in Event Studies with Heterogeneous Treatment Effects.” Journal of Econometrics 225(2):175–99. doi: 10.1016/j.jeconom.2020.09.006.
+
+Xu, Yiqing. 2017. “Generalized Synthetic Control Method: Causal Inference with Interactive Fixed Effects Models.” Political Analysis 25(1):57–76. doi: 10.1017/pan.2016.2.
 
 
 
 # It's mediation all the way down!
 
-## G-methods for SNMs and MSMs (and a bunch of other acronyms)
+## G-methods for SNMMs and MSMs (and a bunch of other acronyms)
+
+*Required*
+
+Blackwell, Matthew. 2013. “A Framework for Dynamic Causal Inference in Political Science.” American Journal of Political Science 57(2):504–20. doi: 10.1111/j.1540-5907.2012.00626.x.
+
+Lawrence, Matthew, and Richard Breen. 2016. “And Their Children after Them? The Effect of College on Educational Reproduction.” American Journal of Sociology 122(2):532–72. doi: 10.1086/687592. (**)
+
+Naimi, Ashley I., Stephen R. Cole, and Edward H. Kennedy. 2017. “An Introduction to g Methods.” International Journal of Epidemiology 46(2):756–62. doi: 10.1093/ije/dyw323. (*)
+
+*Suggested*
 
 Blackwell, Matthew, and Adam N. Glynn. 2018. “How to Make Causal Inferences with Time-Series Cross-Sectional Data under Selection on Observables.” American Political Science Review 112(4):1067–82. doi: 10.1017/S0003055418000357.
 
-Lawrence, Matthew, and Richard Breen. 2016. “And Their Children after Them? The Effect of College on Educational Reproduction.” American Journal of Sociology 122(2):532–72. doi: 10.1086/687592.
+Joffe, Marshall M. 2012. “Commentary: Structural Nested Models, G-Estimation, and the Healthy Worker Effect: The Promise (Mostly Unrealized) and the Pitfalls.” Epidemiology 23(2):220–22.
 
-Naimi, Ashley I., Stephen R. Cole, and Edward H. Kennedy. 2017. “An Introduction to g Methods.” International Journal of Epidemiology 46(2):756–62. doi: 10.1093/ije/dyw323.
+Loh, Wen Wei, Dongning Ren, and Stephen G. West. 2024. “Parametric G-Formula for Testing Time-Varying Causal Effects: What It Is, Why It Matters, and How to Implement It in Lavaan.” Multivariate Behavioral Research 59(5):995–1018. doi: 10.1080/00273171.2024.2354228.
+
+
+Robins, James M. 2000. “Marginal Structural Models versus Structural Nested Models as Tools for Causal Inference.” Pp. 95–133 in Statistical Models in Epidemiology, the Environment, and Clinical Trials. Vol. 116, The IMA Volumes in Mathematics and its Applications, edited by M. E. Halloran and D. Berry. New York, NY: Springer New York.
+
+Robins, James M. 2004. “Optimal Structural Nested Models for Optimal Sequential Decisions.” Pp. 189–326 in Proceedings of the Second Seattle Symposium in Biostatistics: Analysis of Correlated Data, edited by D. Y. Lin and P. J. Heagerty. New York, NY: Springer.
+
+Robins, James M., and Hernán, Miguel A. 2009. “Estimattion of the Causal Effects of Time-Varying Exposures.” in Longitudinal data analysis, Chapman and Hall/CRC handbooks of modern statistical methods, edited by G. M. Fitzmaurice, M. Davidian, G. Verbeke, and G. Molenberghs. Boca Raton, FL: Chapman & Hall/CRC.
 
 Robins, James M., Miguel Ángel Hernán, and Babette Brumback. 2000. “Marginal Structural Models and Causal Inference in Epidemiology:” Epidemiology 11(5):550–60. doi: 10.1097/00001648-200009000-00011.
 
 Sato, Tosiya, and Yutaka Matsuyama. 2003. “Marginal Structural Models as a Tool for Standardization:” Epidemiology 14(6):680–86. doi: 10.1097/01.EDE.0000081989.82616.7d.
 
+Shahn, Zach, Oliver Dukes, Meghana Shamsunder, David Richardson, Eric Tchetgen Tchetgen, and James Robins. 2024. “Structural Nested Mean Models Under Parallel Trends Assumptions.”
+
 Sharkey, Patrick, and Felix Elwert. 2011. “The Legacy of Disadvantage: Multigenerational Neighborhood Effects on Cognitive Ability.” American Journal of Sociology 116(6):1934–81. doi: 10.1086/660009.
+
+Vansteelandt, Stijn, and Marshall Joffe. 2014. “Structural Nested Models and G-Estimation: The Partially Realized Promise.” Statistical Science 29(4). doi: 10.1214/14-STS493.
+
+Wodtke, Geoffrey T., Zahide Alaca, and Xiang Zhou. 2020. “Regression-with-Residuals Estimation of Marginal Effects: A Method of Adjusting for Treatment-Induced Confounders That May Also Be Effect Modifiers.” Journal of the Royal Statistical Society: Series A (Statistics in Society) 183(1):311–32. doi: 10.1111/rssa.12497.
+
 
 Wodtke, Geoffrey T., Felix Elwert, and David J. Harding. 2016. “Neighborhood Effect Heterogeneity by Family Income and Developmental Period.” American Journal of Sociology 121(4):1168–1222. doi: 10.1086/684137.
 
 Wodtke, Geoffrey T., David J. Harding, and Felix Elwert. 2011. “Neighborhood Effects in Temporal Perspective: The Impact of Long-Term Exposure to Concentrated Disadvantage on High School Graduation.” American Sociological Review 76(5):713–36. doi: 10.1177/0003122411420816.
 
+Zhou, Xiang, and Geoffrey T. Wodtke. 2020. “Residual Balancing: A Method of Constructing Weights for Marginal Structural Models.” Political Analysis 28(4):487–506. doi: 10.1017/pan.2020.2.
+
+
 
 ## Friends don't let friends (pretend they don't) do mediation analysis
+
+
+*Required*
+
+Acharya, Avidit, Matthew Blackwell, and Maya Sen. 2016. “Explaining Causal Findings Without Bias: Detecting and Assessing Direct Effects.” American Political Science Review 110(3):512–29. doi: 10.1017/S0003055416000216.
+
+Wang, Aolin, and Onyebuchi A. Arah. 2015. “G-Computation Demonstration in Causal Mediation Analysis.” European Journal of Epidemiology 30(10):1119–27. doi: 10.1007/s10654-015-0100-z. (*)
+
+Zhou, Xiang, and Guanghui Pan. 2023. “Higher Education and the Black-White Earnings Gap.” American Sociological Review 88(1):154–88. doi: 10.1177/00031224221141887.(**)
+
+
+*Suggested*
+
+Acharya, Avidit, Matthew Blackwell, and Maya Sen. 2018. “Analyzing Causal Mechanisms in Survey Experiments.” Political Analysis 26(4):357–78. doi: 10.1017/pan.2018.19.
+
+Andrews, Ryan M., and Vanessa Didelez. 2021. “Insights into the Cross-World Independence Assumption of Causal Mediation Analysis.” Epidemiology 32(2):209. doi: 10.1097/EDE.0000000000001313.
 
 Baron, Reuben M., and David A. Kenny. n.d. “The Moderator-Mediator Variable Distinction in Social Psychological Research: Conceptual, Strategic, and Statistical Considerations.”
 
 Blackwell, Matthew, Ruofan Ma, and Aleksei Opacic. 2024. “Assumption Smuggling in Intermediate Outcome Tests of Causal Mechanisms.”
+
+Brand, Jennie E., Ravaris Moore, Xi Song, and Yu Xie. 2019. “Why Does Parental Divorce Lower Children’s Educational Attainment? A Causal Mediation Analysis.” Sociological Science 5:264–92. doi: 10.15195/v6.a11.
 
 Hong, Guanglei. 2015. Causality in a Social World: Moderation, Mediation and Spill-Over. 1st edition. Chichester, England: Wiley.
 
@@ -451,43 +546,120 @@ Imai, Kosuke, Luke Keele, and Dustin Tingley. 2010. “A General Approach to Cau
 
 Imai, Kosuke, Luke Keele, and Teppei Yamamoto. 2010. “Identification, Inference and Sensitivity Analysis for Causal Mediation Effects.” Statistical Science 25(1):51–71. doi: 10.1214/10-STS321.
 
+Maltzahn, Niklas N., Ingrid Sivesind Mehlum, and Jon Michael Gran. 2024. “Separable and Controlled Direct Effects for Competing Events: Estimation of Component Specific Effects on Sickness Absence.” Statistics in Medicine 43(22):4305–27. doi: 10.1002/sim.10179.
+
+Martinussen, Torben, and Mats Julius Stensrud. 2023. “Estimation of Separable Direct and Indirect Effects in Continuous Time.” Biometrics 79(1):127–39. doi: 10.1111/biom.13559.
+
+Nguyen, Trang Quynh, Elizabeth L. Ogburn, Ian Schmid, Elizabeth B. Sarker, Noah Greifer, Ina M. Koning, and Elizabeth A. Stuart. 2023. “Causal Mediation Analysis: From Simple to More Robust Strategies for Estimation of Marginal Natural (in)Direct Effects.” Statistics Surveys 17. doi: 10.1214/22-SS140.
+
+Nguyen, Trang Quynh, Ian Schmid, Elizabeth L. Ogburn, and Elizabeth A. Stuart. 2022. “Clarifying Causal Mediation Analysis: Effect Identification via Three Assumptions and Five Potential Outcomes.” Journal of Causal Inference 10(1):246–79. doi: 10.1515/jci-2021-0049.
+
+Pearl, Judea. 2012. “The Mediation Formula: A Guide to the Assessment of Causal Pathways in Nonlinear Models.” Pp. 151–79 in Causality. John Wiley & Sons, Ltd.
+
 Robins, James M., and Sander Greenland. 1992. “Identifiability and Exchangeability for Direct and Indirect Effects.” Epidemiology 3(2):143–55.
 
 Robins, James M., Thomas S. Richardson, and Ilya Shpitser. 2022. “An Interventionist Approach to Mediation Analysis.” Pp. 713–64 in Probabilistic and Causal Inference: The Works of Judea Pearl. Vol. 36. New York, NY, USA: Association for Computing Machinery.
 
+Stensrud, Mats J., Miguel A. Hernán, Eric J. Tchetgen Tchetgen, James M. Robins, Vanessa Didelez, and Jessica G. Young. 2021. “A Generalized Theory of Separable Effects in Competing Event Settings.” Lifetime Data Analysis 27(4):588–631. doi: 10.1007/s10985-021-09530-8.
+
+Stensrud, Mats J., James M. Robins, Aaron Sarvet, Eric J. Tchetgen Tchetgen, and Jessica G. Young. 2023. “Conditional Separable Effects.” Journal of the American Statistical Association 118(544):2671–83. doi: 10.1080/01621459.2022.2071276.
+
 VanderWeele, Tyler. 2015. Explanation in Causal Inference: Methods for Mediation and Interaction. Oxfordf New York, NY: OUP USA.
 
-Wang, Aolin, and Onyebuchi A. Arah. 2015. “G-Computation Demonstration in Causal Mediation Analysis.” European Journal of Epidemiology 30(10):1119–27. doi: 10.1007/s10654-015-0100-z.
+VanderWeele, Tyler J. 2016. “Mediation Analysis: A Practitioner’s Guide.” Annual Review of Public Health 37(1):17–32. doi: 10.1146/annurev-publhealth-032315-021402.
+
+Vansteelandt, Stijn. 2012. “Estimation of Direct and Indirect Effects.” Pp. 126–50 in Causality. John Wiley & Sons, Ltd.
+
+Vansteelandt, Stijn, and Rhian M. Daniel. 2017. “Interventional Effects for Mediation Analysis with Multiple Mediators.” Epidemiology 28(2):258–65.
 
 Wodtke, Geoffrey T., Ugur Yildirim, David J. Harding, and Felix Elwert. 2023. “Are Neighborhood Effects Explained by Differences in School Quality?” American Journal of Sociology 128(5):1472–1528. doi: 10.1086/724279.
 
-Zhou, Xiang, and Guanghui Pan. 2023. “Higher Education and the Black-White Earnings Gap.” American Sociological Review 88(1):154–88. doi: 10.1177/00031224221141887.
+Zhou, Xiang. 2022. “Semiparametric Estimation for Causal Mediation Analysis with Multiple Causally Ordered Mediators.” Journal of the Royal Statistical Society: Series B (Statistical Methodology) 84(3):794–821. doi: 10.1111/rssb.12487.
+
+Zhou, Xiang. 2024. “Attendance, Completion, and Heterogeneous Returns to College: A Causal Mediation Approach.” Sociological Methods & Research 53(3):1136–66. doi: 10.1177/00491241221113876.
+
+Zhou, Xiang, and Teppei Yamamoto. 2023. “Tracing Causal Paths from Experimental and Observational Data.” The Journal of Politics 85(1):250–65. doi: 10.1086/720310.
+
+
 
 
 # No catchy name for this one (I'm sorry!)
 
 ## Disparities and decompositions
 
+*Required*
+
+Lundberg, Ian. 2024. “The Gap-Closing Estimand: A Causal Approach to Study Interventions That Close Disparities Across Social Categories.” Sociological Methods & Research 53(2):507–70. doi: 10.1177/00491241211055769.
+
+Opacic, Aleksei, Lai Wei, and Xiang Zhou. 2024. “Disparity Analysis: A Tale of Two Approaches.”
+
+*Suggested*
+
 An, Weihua, and Adam N. Glynn. 2021. “Treatment Effect Deviation as an Alternative to Blinder–Oaxaca Decomposition for Studying Social Inequality.” Sociological Methods & Research 50(3):1006–33. doi: 10.1177/0049124119852387.
+
+Baum, Derick S., and Xiang Zhou. n.d. “Explaining Disparities at Quantiles: An Augmented Kitagawa-Oaxaca-Blinder Decomposition.”
+
+Canudas Romo, Vladimir. 2003. Decomposition Methods in Demography. Amsterdam: Rozenberg.
+
+Jackson, John W., and Onyebuchi A. Arah. 2020. “Invited Commentary: Making Causal Inference More Social and (Social) Epidemiology More Causal.” American Journal of Epidemiology 189(3):179–82. doi: 10.1093/aje/kwz199.
+
+Jackson, John W., and Tyler J. VanderWeele. 2018. “Decomposition Analysis to Identify Intervention Targets for Reducing Disparities.” Epidemiology 29(6):825. doi: 10.1097/EDE.0000000000000901.
+
+Kitagawa, Evelyn M. 1955. “Components of a Difference Between Two Rates.” Journal of the American Statistical Association 50(272):1168–94. doi: 10.2307/2281213.
 
 Kratz, Fabian. 2024. “Mediation and Decomposition Analysis: Why We Cannot Do What We Think We Can Do, and How Causal Mediation Analysis Can Help Us.”
 
-Lundberg, Ian. 2024. “The Gap-Closing Estimand: A Causal Approach to Study Interventions That Close Disparities Across Social Categories.” Sociological Methods & Research 53(2):507–70. doi: 10.1177/00491241211055769.
+Plečko, Drago, and Elias Bareinboim. 2024. “Causal Fairness Analysis: A Causal Toolkit for Fair Machine Learning.” Foundations and Trends® in Machine Learning 17(3):304–589. doi: 10.1561/2200000106.
 
 Yu, Ang, and Felix Elwert. 2024. “Nonparametric Causal Decomposition of Group Disparities.”
 
 
 ## Blocking backdoors (on steroids): machine learning
 
-Athey, Susan, and Guido W. Imbens. 2019. “Machine Learning Methods That Economists Should Know About.” Annual Review of Economics 11(Volume 11, 2019):685–725. doi: 10.1146/annurev-economics-080217-053433.
+*Required*
 
-Brand, Jennie E., Xiang Zhou, and Yu Xie. 2023. “Recent Developments in Causal Inference and Machine Learning.” Annual Review of Sociology 49(Volume 49, 2023):81–110. doi: 10.1146/annurev-soc-030420-015345.
-
-Hoffmann, Nathan I. 2023. “Double Robust, Flexible Adjustment Methods for Causal Inference: An Overview and an Evaluation.”
+Glynn, Adam N., and Kevin M. Quinn. 2010. “An Introduction to the Augmented Inverse Propensity Weighted Estimator.” Political Analysis 18(1):36–56. doi: 10.1093/pan/mpp036.
 
 Koch, Bernard J., Tim Sainburg, Pablo Geraldo Bastías, Song Jiang, Yizhou Sun, and Jacob G. Foster. 2024. “A Primer on Deep Learning for Causal Inference.” Sociological Methods & Research 00491241241234866. doi: 10.1177/00491241241234866.
 
 Lundberg, Ian, Jennie E. Brand, and Nanum Jeon. 2022. “Researcher Reasoning Meets Computational Capacity: Machine Learning for Social Science.” Social Science Research 108:102807. doi: 10.1016/j.ssresearch.2022.102807.
+
+*Suggested*
+
+Athey, Susan, and Guido W. Imbens. 2019. “Machine Learning Methods That Economists Should Know About.” Annual Review of Economics 11(Volume 11, 2019):685–725. doi: 10.1146/annurev-economics-080217-053433.
+
+Athey, Susan, Julie Tibshirani, and Stefan Wager. 2019. “Generalized Random Forests.” The Annals of Statistics 47(2):1148–78. doi: 10.1214/18-AOS1709.
+
+Brand, Jennie E., Jiahui Xu, Bernard Koch, and Pablo Geraldo. 2021. “Uncovering Sociological Effect Heterogeneity Using Tree-Based Machine Learning.” Sociological Methodology 51(2):189–223. doi: 10.1177/0081175021993503.
+
+Brand, Jennie E., Xiang Zhou, and Yu Xie. 2023. “Recent Developments in Causal Inference and Machine Learning.” Annual Review of Sociology 49(Volume 49, 2023):81–110. doi: 10.1146/annurev-soc-030420-015345.
+
+Chatton, Arthur, Florent Le Borgne, Clémence Leyrat, Florence Gillaizeau, Chloé Rousseau, Laetitia Barbin, David Laplaud, Maxime Léger, Bruno Giraudeau, and Yohann Foucher. 2020. “G-Computation, Propensity Score-Based Methods, and Targeted Maximum Likelihood Estimator for Causal Inference with Different Covariates Sets: A Comparative Simulation Study.” Scientific Reports 10(1):9219. doi: 10.1038/s41598-020-65917-x.
+
+Chernozhukov, Victor, Denis Chetverikov, Mert Demirer, Esther Duflo, Christian Hansen, Whitney Newey, and James Robins. 2018. “Double/Debiased Machine Learning for Treatment and Structural Parameters.” The Econometrics Journal 21(1):C1–68. doi: 10.1111/ectj.12097.
+
+Chernozhukov, Victor, Christian Hansen, Nathan Kallus, Martin Spindler, and Vasilis Syrgkanis. 2024. “Applied Causal Inference Powered by ML and AI.”
+
+Díaz, Iván. 2020. “Machine Learning in the Estimation of Causal Effects: Targeted Minimum Loss-Based Estimation and Double/Debiased Machine Learning.” Biostatistics 21(2):353–58. doi: 10.1093/biostatistics/kxz042.
+
+Fuhr, Jonathan, Philipp Berens, and Dominik Papies. 2024. “Estimating Causal Effects with Double Machine Learning -- A Method Evaluation.”
+
+Hahn, P. Richard, Carlos M. Carvalho, David Puelz, and Jingyu He. 2018. “Regularization and Confounding in Linear Regression for Treatment Effect Estimation.” Bayesian Analysis 13(1). doi: 10.1214/16-BA1044.
+
+Hoffmann, Nathan I. 2023. “Double Robust, Flexible Adjustment Methods for Causal Inference: An Overview and an Evaluation.”
+
+Laan, Mark J. van der, and Sherri Rose. 2011. Targeted Learning: Causal Inference for Observational and Experimental Data. 2011th edition. New York: Springer.
+
+Laan, Mark van der, and Susan Gruber. 2016. “One-Step Targeted Minimum Loss-Based Estimation Based on Universal Least Favorable One-Dimensional Submodels.” The International Journal of Biostatistics 12(1):351–78. doi: 10.1515/ijb-2015-0054.
+
+Qiu, Hongxiang. 2024. “Non-Plug-In Estimators Could Outperform Plug-In Estimators: A Cautionary Note and a Diagnosis.”
+
+Robins, James M., Andrea Rotnitzky, and Lue Ping Zhao. 1994. “Estimation of Regression Coefficients When Some Regressors Are Not Always Observed.” Journal of the American Statistical Association 89(427):846–66. doi: 10.1080/01621459.1994.10476818.
+
+Tan, Zhiqiang. 2010. “Bounded, Efficient and Doubly Robust Estimation with Inverse Weighting.” Biometrika 97(3):661–82.
+
+van der Laan, Mark, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips, and Alan Hubbard. 2024. Targeted Learning in R: Causal Data Science with the Tlverse Software Ecosystem.
+
 
 
 # All of this for nothing?
