@@ -15,11 +15,11 @@ margin-top: 2cm
 margin-bottom: 2cm
 ---
 
-University of Oxford - Hilary 2025
-
-Location: Seminar room, Department of Sociology
-
-Meetings: Mondays, 3-5pm
+University of Oxford - Hilary 2025 |
+Location: Seminar room, Department of Sociology |
+Meetings: Mondays, 3-5pm |
+Class website: [Canvas](https://canvas.ox.ac.uk/courses/293311) |
+Office hours: By appointment [here](https://calendly.com/pdgerald/office-hours)
 
 
 
@@ -47,10 +47,7 @@ Basic knowledge of probability and statistics, up to generalized linear models, 
 
 - Shalizi, C. R. (2024). Advanced Data Analysis from an Elementary Point of View. Free online: [https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf ](https://www.stat.cmu.edu/~cshalizi/ADAfaEPoV/ADAfaEPoV.pdf)
 
-## Weekly plan
- 
-We will broadly follow this plan, but there would be some adjustments if needed. 
-
+## Weekly plan (subject to change)
 
 **Week 1**: Introduction to Potential Outcomes and the experimental ideal
 
@@ -78,9 +75,9 @@ To get the most out of the class (to understand, to the point of being able to b
  
 Problem sets will be assigned every other week, and you will get two weeks to work on them. Each assignment will include a combination of conceptual and theoretical questions, some practical questions regarding applications and empirical examples, and some coding exercises. All problem sets are equally weighted towards the final grade. 
 
-Collaboration is encouraged. Work with your classmates, discuss your answers, and help each other. However, it is required for everyone to produce their own answers, so do not copy verbatim from each other’s answers (including code). And make sure to include in your response the list of people you collaborated with. 
+Research is a collaborative practice. You can work with your classmates, discuss the problem sets, and help each other to understand difficult concepts. However, it is required for everyone to produce their own answers, so *do not* copy verbatim from each other’s answers (including code). And make sure to include in your response the list of people you collaborated with. 
 
-Problem sets can feel long and relatively challenging. Do not wait until the last minute to start them! The ideal would be to work on them through the two-week period as you attend the lectures and do the readings and tutorials. I recommend answering as much as you can during the time given, and submit whatever you have by the deadline. Try your best, but do not lose sleep over a problem set. If you do too little, I will let you know. But it is generally fine to submit an incomplete problem set. 
+Problem sets can feel long and relatively challenging. Do not wait until the last minute to start them! The ideal would be to work on them through the two-week period as you read and attend lectures. I recommend answering as much as you can during the time given, and submit what you have by the deadline, instead of asking for extensions. Extensions will only cause you to have more work later. Try your best, but do not lose sleep over a problem set.
 
 * Problem set 1: handed on January 20th, submit by January 31st
 
@@ -108,15 +105,15 @@ If you are proficient in Stata and need to migrate to R, you may find some of th
 
 Finally, Quarto. Quarto is a type of document where you can seamlessly write text, code, run your analyses, and get output (tables and plots) directly incorporated. Even more, from the same source code, you can render a pdf document or an html version (like a local website). It is therefore an amazing tool for research and data science, making your work well documented and reproducible. There is a Quarto chapter in the r4ds book ([here](https://r4ds.hadley.nz/quarto)), and the official documentation is very well explained. To get started go here: [https://quarto.org/docs/get-started/hello/rstudio.html](https://quarto.org/docs/get-started/hello/rstudio.html)
 
-For the problem sets, we will use Quarto. If you’re familiar with Rmarkdown, it is pretty much the same, but better. If you are not, it’s ok. You can probably get away by just modifying the template I will provide. Notice that Quarto also supports other programming languages, such as Python. You can use them for the problem sets, but no support will be provided. 
+For the problem sets, we will use Quarto. If you’re familiar with Rmarkdown, it is pretty much the same, but better. If you are not, it’s ok. You can probably get away by just modifying the template I will provide. Notice that Quarto also supports other programming languages, such as Python. You can use them for the problem sets, but no support will be provided for coding issues in other languages.
 
 ## Using ChatGPT and other Generative AI tools
 
 The University has adopted the Russell Group guidelines for the use of Generative AI in education [[here](https://russellgroup.ac.uk/media/6137/rg_ai_principles-final.pdf)]. Additional resources can be found [here](https://www.ctl.ox.ac.uk/ai) and [here.](https://www.ox.ac.uk/students/academic/guidance/skills/ai-study) Up to date policies on Plagiarism can be found [here](https://www.ox.ac.uk/students/academic/guidance/skills/plagiarism). 
 
-In general, using ChatGPT or other Generative AI tools in this class is discouraged but not forbidden, under certain limits. If you need help to clean your answers from grammatical and redaction errors, go ahead. If you need help debugging your own code, go ahead. But make sure to add a note indicating if and when you used the help of a Generative AI model, including the type of model you used (ChatGPT, Claude, or any other), and the prompt you asked. 
+In general, using ChatGPT or other Generative AI tools in this class is discouraged but not forbidden, under certain limits. Write your own answers, but if you need help cleaning grammatical and redaction errors, go ahead. Write your own code, but if you need help debugging, go ahead. Whatever the case, you should add a note indicating if and when you used the help of a Generative AI model, including the type of model you used (ChatGPT, Claude, or any other), and the prompt you asked. 
 
-However, do not ask an LLM to do the work for you! The first and most important reason is that there is no point in taking this class if you’re not doing the work yourself. Another important reason is that, believe it or not, these models do not understand causal inference very well. You may get a lot of ok-sounding answers that are fundamentally flawed (I have checked this many times myself!). The idea of taking this class is precisely being able to separate the wheat from the chaff in the applied causal inference literature, while Generative AI is a really powerful tool to obfuscate their difference. Therefore: 
+Once again, do not ask a Generative AI model to do the work for you! The first and most important reason is that there is no point in taking this class if you’re not doing the work yourself. Another important reason is that, believe it or not, these models do not understand causal inference very well. You may get a lot of ok-sounding answers that are fundamentally flawed (I have checked this many times myself!). The idea of taking this class is precisely being able to separate the wheat from the chaff in the applied causal inference literature, while Generative AI is a really powerful tool to obfuscate their difference. Therefore: 
 
 It is important to do the required readings, not just read an automated summary of them. Reading is learning!
 
@@ -126,7 +123,7 @@ It is important to write your own code, and to check that it correctly implement
 
 ## References
  
-The complete list of readings for this class, organized by topics, can be found here. Here I only list some booksI have found particularly useful to improve my understanding of causal inference.
+The complete list of readings for this class, organized by topics, can be found on Canvas. Here I only list some booksI have found particularly useful to improve my understanding of causal inference.
 
 * Angrist, Joshua and Jörn-Steffen Pischke (2009). Mostly Harmless Econometrics. Princeton University Press
 
