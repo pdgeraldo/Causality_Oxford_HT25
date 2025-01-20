@@ -11,7 +11,7 @@ include-in-header:
       }
       </style>
 footer: "Potential outcomes and experiments"
-date: 20/03/2025
+date: 01/20/2025
 date-format: long
 format: 
   revealjs:

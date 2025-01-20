@@ -11,7 +11,7 @@ include-in-header:
       }
       </style>
 footer: "Why Causal Inference?"
-date: 20/03/2025
+date: 01/20/2025
 date-format: long
 format: 
   revealjs:
@@ -36,7 +36,7 @@ callout-appearance: minimal
 . . .
 
 <br>
-The social sciences are experimenting what some authors have described as the rise of "causal empiricism" (Samii, 2016)", a "credibility revolution" (Angrist and Pischke, 2010), or simply a "causal revolution" (Pearl and MacKenzie, 2018)
+The social sciences are experimenting what some authors have described as the rise of "causal empiricism" (Samii, 2016), a "credibility revolution" (Angrist and Pischke, 2010), or simply a "causal revolution" (Pearl and MacKenzie, 2018)
 
 . . .
 
@@ -49,13 +49,13 @@ The enormous progress in the last decades has been facilitated by the developmen
 ---
 
 
-## What should you expect from this workshop?
+## What should you expect from this class?
 
 <br>
 
-This workshop is designed as a "Crash Course", so we can focus only on a few things:
+This class is designed as a first course in causal inference, so we can focus only on a few things:
 
-* Familiarize yourself with the most widely used CI frameworks
+* Familiarize yourself with the most widely used causal inference frameworks
 
 * Understand the role of randomization to tackle causal questions
 
@@ -67,40 +67,53 @@ This workshop is designed as a "Crash Course", so we can focus only on a few thi
 
 * Assess the plausibility of different identification strategies applied to real problems
 
-. . . 
 
-In the afternoon sessions, we will focus on two commonly invoked identification strategies:
-
-* Selection on observables
-
-* Instrumental variables
-
----
-
-
-## What are we not covering today?
+## What should you expect from this class?
 
 <br>
 
-There is a lot of stuff out there! Some areas that you might be interested in but we don't have enough time to review today:
+In later sessions, we will focus on some commonly invoked identification strategies:
 
-* Sequential estimation for time-varying treatments 
+* Selection on observables (regression, imputation, matching, weighting, doubly robust methods and flexible estimation using machine learning)
 
-* Machine learning for heterogeneous treatment effects
+* Instrumental variables and regression discontinuity designs
 
-* Do-calculus and PO-calculus for identification
+* Difference-in-difference, synthetic controls, and extensions
 
-* Causal mediation analysis, causal attribution
+* G-methods for time-varying treatment and time-varying confounding
 
-* Other graphical models (MCM, SWIGs, the Hypothetical Model)
+* Mediation analysis, disparities and decompositions
 
-* Selection diagrams for missing data
+* Sensitivity analysis and external validity
 
-* Data fusion (generalization, external validity)
 
-* Causal discovery (going from the data to the DAG)
+## But, first: What is your estimand?
 
----
+Researchers, at least social scientists, tend to formalize their effect of interest as **regression coefficients** (i.e., their hypothesis are formulated within a statistical model)
+
+[[**This is too restrictive!**]()]{.fragment .fade-in}
+
+. . . 
+
+Potential outcomes offer a way to formalize what we mean by a *causal effect* outside any statistical model. Graphical models provides a way to formalize our *assumptions* without parametric restrictions.
+
+. . .
+
+This allows us to clearly separate *what do we want* (a certain **estimand**), what needs to be true so we get what we want (**identifying assumptions**), the statistical machinery to transform data into an answer for our question (an **estimator**), and the particular answer we get (our empirical **estimate**).
+
+:::{.aside}
+Lundberg, Johnson, and Stewart (2021) discuss this point in great detail.
+:::
+
+## But, first: What is your estimand?
+
+
+![](img/Lundberg_estimand.jpeg){fig-align="center" width=70%}
+
+
+
+
+# What is causal inference about? {background-color="#00a191"}
 
 
 ## Intuitions about causality
@@ -142,8 +155,6 @@ There is a lot of stuff out there! Some areas that you might be interested in bu
 
 
 
-# What is causal inference about? {background-color="#00a191"}
-
 ## Statistics/ML vs Causal Inference
 
 ::: {.columns}
@@ -175,8 +186,16 @@ $$= E(Y_x) - E(Y_{x'})$$
 :::
 ---
 
+## The ladder of causation
 
-## The ladder of causality {background-color="#002F87"}
+![](img/causation_ladder.png){fig-align="center" width=50%}
+
+:::{.aside}
+Drawing by Maayan Harel, TBOW
+:::
+
+
+## The ladder of causation {background-color="#002F87"}
 
 :::{.panel-tabset}
 
@@ -195,14 +214,15 @@ $$= E(Y_x) - E(Y_{x'})$$
 
 | Estimand | Activity | Field/Discipline | Questions | Example |
 | --- | --- | --- | ----- | ------ |
-| $\mathbf{P(Y_x \vert x',y')}$ | Imagining, Retrospecting | Structural Models | *What would have happened with Y have I done X instead of X'? Why?* | What would have been my parents' income have they graduated from college, given that they didn't attend?| 
+| $\mathbf{P(Y_x \vert x',y')}$ | Imagining, Retrospecting | Structural Models | *What would have happened with Y have I done X instead of X'? Why?* | What would have my parents' income been, have they graduated from college, given that they didn't go?| 
 :::
 
 ::: aside
 Pearl and Mackenzie (2018)
 :::
 
----
+
+# {background-color="#00a191"}
 
 ## But, is **doing** *really* that different from **seeing**? 
 
