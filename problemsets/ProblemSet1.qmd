@@ -8,7 +8,7 @@ format:
 ---
 
 
-# Potential Outcomes and Experiments
+# Section 1: Potential Outcomes and Experiments
 
 ## Answers Exercises from Chapter 1 of Gerber and Green's *Field Experiments*
 
@@ -19,5 +19,5 @@ format:
 
 \newpage
 
-# Structural Causal Model
+# Section 2: Structural Causal Model
 
