@@ -109,7 +109,7 @@ Weisshaar, Katherine, Koji Chavez, and Tania Hutt. 2024. “Hiring Discriminatio
 
 Elwert, Felix, and Christopher Winship. 2014. “Endogenous Selection Bias: The Problem of Conditioning on a Collider Variable.” Annual Review of Sociology 40(1):31–53. doi: 10.1146/annurev-soc-071913-043455. (**)
 
-Morgan, Stephen L. and Christopher Winship (2014). Counterfactuals and Causal Inference: Methods and Principles for Social Research (2nd edition), Cambridge University Press, Chapters 3 (*)
+Morgan, Stephen L. and Christopher Winship (2014). Counterfactuals and Causal Inference: Methods and Principles for Social Research (2nd edition), Cambridge University Press, Chapter 3 (*)
 
 Pearl, Judea, Madelyn Glymour, and Nicholas P. Jewell. 2016. Causal Inference in Statistics: A Primer. 1st edition. Chichester: Wiley, Chapter 3 (until section 3.7)
 
