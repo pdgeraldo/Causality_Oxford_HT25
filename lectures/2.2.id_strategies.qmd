@@ -1,0 +1,216 @@
+---
+title: "Identification strategies as templates"
+author: "Pablo Geraldo Bastías"
+logo: "https://fundit.fr/sites/default/files/styles/max_650x650/public/institutions/capture-decran-2023-07-07-162216.png?itok=1CkwlJEu"
+include-in-header:
+  - text: |
+      <style>
+      .reveal .slide-logo {
+        max-height: unset;
+        height: 100px;
+      }
+      </style>
+footer: "Potential outcomes and experiments"
+date: 01/27/2025
+date-format: long
+format: 
+  revealjs:
+    theme: simple
+    width: 1600
+    height: 900
+    transition: slide
+    slide-number: c/t
+    chalkboard: true
+    auto-stretch: false
+callout-appearance: simple
+---
+
+# Identification strategies {background-color="#00a191"}
+
+\newcommand\indep{\perp\!\!\!\perp}
+\newcommand\nindep{\not\!\perp\!\!\!\perp}
+
+## Identification strategies: a short tour
+
+Identification strategies are well-known set of assumptions that are sufficient for the causal interpretation of certain estimators:
+
+:::{.callout-tip}
+## Imbens (2019)
+*Partly as a result of the focus on empirical examples the econometrics literature has developed a small number of canonical settings where researchers view the specific causal models and associated statistical methods as well-established and understood. These causal models correspond to what is nowadays often referred to as* identification strategies
+:::
+
+
+---
+
+## Identification strategies: a short tour
+
+:::{.panel-tabset}
+
+## RCTs
+
+:::{.columns}
+
+:::{.column width=40%}
+![](img/id_random.png)
+:::
+
+:::{.column width=60%}
+
+**Estimand** : $E[Y_{1i}-Y_{0i}]$ 
+
+**Implied independences**:  $Y_d \indep D$ 
+
+**Parametric assumptions**:  No 
+
+**Estimator**:  $\hat{E}[Y|D=1] - \hat{E}[Y|D=0]$
+:::
+
+:::
+
+**Randomisation** ensures that the potential outcomes are independent from the treatment in experiments. This justifies a causal interpretation of a diff-in-means estimator
+
+## RDD_lr
+
+:::{.columns}
+
+:::{.column width=40%}
+![](img/id_rdd_LR.png)
+:::
+
+:::{.column width=60%}
+
+**Estimand**: $E[Y_{1i}-Y_{0i}|Z=c]$
+
+**Implied independences**: $Y_d \indep D \vert \{Z = c \pm \epsilon\}$
+
+**Parametric assumptions**: No
+
+**Estimator**:  $\hat{E}[Y|c \leq Z \leq c+\epsilon] -  \hat{E}[Y |c > Z \geq c-\epsilon]$ 
+:::
+
+:::
+
+## RDD_cpo
+
+
+:::{.columns}
+
+:::{.column width=40%}
+![](img/id_rdd_Cont.png)
+
+:::
+
+:::{.column width=60%}
+
+**Estimand**: $E[Y_{1i}-Y_{0i}|Z=c]$ 
+
+**Implied independences**: No
+
+**Parametric assumptions**: $E[Y_d|Z=c] = \lim_{z\rightarrow c}E[Y_d|Z=z]$
+
+**Estimator**:  $\hat{E}[Y|c \leq Z \leq c+\epsilon, Z] - \hat{E}[Y |c > Z \geq c-\epsilon, Z]$
+
+
+:::
+
+:::
+
+## IV 
+
+:::{.columns}
+
+:::{.column width=40%}
+![](img/id_iv.png)
+
+:::
+
+:::{.column width=60%}
+
+**Estimand**: $E[Y_{1i}-Y_{0i}|D_{z=1}=1,D_{z=0}=0]$
+
+**Implied independences**: $Y_{z,d} = Y_d$,  $\{Y_{z,d}, D_z\} \indep Z$
+
+**Parametric assumptions**: $P[D_{z,i}=1] \geq P[D_{z',i}=1] \forall i, z>z'$
+
+**Estimator**:  $\hat{E}[Y|Z=1]-\hat{E}[Y|Z=0]/\hat{E}[D|Z=1]-\hat{E}[D|Z=0]$
+
+
+:::
+
+:::
+
+
+## SOO
+
+
+:::{.columns}
+
+:::{.column width=40%}
+![](img/confounder1.png)
+
+:::
+
+:::{.column width=60%}
+
+**Estimand**: $E[Y_{1i}-Y_{0i}|D=1]$
+
+**Implied independences**: $Y_d \indep D | X$, $Y_d \indep D | e(X)$
+
+**Parametric assumptions**: No
+
+**Estimator**: $\hat{E}_x(\hat{E}[Y|D=1,X=x]-\hat{E}[Y|D=0,X=x])$
+
+:::
+
+:::
+
+:::
+
+
+## Is there a ladder of identification strategies?
+
+In general, it is assumed that the stronger the assumptions, the less credible an identification strategy would be
+
+We would prefere experiments (the so-called *gold standard*) and, in the lack of experiments, we would prefer strategies in which our assumptions hold **by design**
+
+Designs in which there is an **exogenous** source of variation in the treatment status (like IV, RDD, quasi-experiments in general) are considered more plausible
+
+However, is there a natural hierarchy of identification strategies that can tell us, *a priori*, which assumptions are more credible in empirical applications?
+
+Do empirical applications corresponds to the labels that we use to describe a given research design? Any thoughts?
+
+
+---
+
+## Debates in applied research
+
+. . . 
+
+:::{.callout-tip}
+## B. G. Cochran (cited in Rosenbaum, 1995)
+*About 20 years ago, when asked in a meeting what can be done in observational studies to clarify the step from association to causation, Sir Ronald Fisher replied: 'Make your theories elaborate.' The reply puzzled me at first, since by Occam's razor, the advice usually given is to make theories as simple as is consistent with known data. What Sir Ronald meant, as subsequent discussion showed, was that when constructing a causal hypothesis one should envisage as many different consequences of its truth as possible, and plan observational studies to discover whether each of these is found to hold.*
+:::
+
+. . .
+
+:::{.callout-tip}
+## Jason Abaluck (cited in Imbens, 2019)
+*No one should ever write down a 100 variable DAG and do inference based on that. That would be an insane approach because the analysis would be totally impenetrable. Develop a research design where that 100 variable DAG trivially reduces to a familiar problem (e.g. IV!)*
+:::
+
+
+## Activity {background-color="#692044"}
+
+Open [www.dagitty.net](http://www.dagitty.net) and launch it. There, you can create a DAG, obtain a list of testable implications, and check if an effect is identified under the DAG.
+
+* Skim the following paper by [Sharkey et al.](https://www.rootcausecoalition.org/wp-content/uploads/2018/08/Community-and-the-Crime-Decline-The-Causal-Effect-of-Local-Nonprofits-on-Violent-Crime.pdf) (see Analytical Approach) and try to reconstruct the underlying DAG for the long-term model:
+
+  * Share your result
+  * Is the effect identified?
+  * Can you think in possible violations of their assumptions?
+  
+* Skim the following paper by [Doyle et al.](https://www.rootcausecoalition.org/wp-content/uploads/2018/08/Community-and-the-Crime-Decline-The-Causal-Effect-of-Local-Nonprofits-on-Violent-Crime.pdf) (see Section III. Empirical Strategy) and try to reconstruct the underlying DAG: 
+
+  * Share your result
+  * Is the effect identified?
+  * Can you think in possible violations of their assumptions?
