@@ -4,18 +4,94 @@ author: "Your name here"
 date: last-modified
 format: 
   pdf:
-    number-sections: true
+    number-sections: false
 ---
 
+## General guidelines
+
+Please answer the questions directly in this document, stating what assumptions you are making if necessary, and attempt the questions even if you are not totally sure of your answers.
+
+You can insert in-line equations using \LaTeX notation like this `$y_i = \alpha + \beta_\tau \tau + \epsilon_i$` and they will show like this: $y_i = \alpha + \beta_\tau \tau + \epsilon_i$. If you want equations to be separated from the main body, just wrap them around double dollar signs instead of one, like this: `$$y_i = \alpha + \beta_\tau \tau + \epsilon_i$$` for the following result: $$y_i = \alpha + \beta_\tau \tau + \epsilon_i$$
+
+Some exercises require calculations. Unless it is a simple computation that can be made on a physical calculator, you should document them directly in here. To insert `R` code (that will be rendered directly in this document), use the following syntax:
+
+```{r}
+# This is R code
+# Code and results will be shown in the compiled document
+
+# Set seed for reproduciblity
+set.seed(1492)
+
+# Let's made a simple calculation
+# assuming the following model
+# Y0 ~ Norm(10,2)
+# Y1 = Y0 + \tau + epsilon_i
+# epsilon ~ Norm(0,1)
+# tau = 1.5
+
+n <- 1000
+epsilon <- rnorm(n)
+y0 <- rnorm(n, mean = 10, sd = 2)
+y1 <- y0 + 1.5 + epsilon
+
+# Now, let's calculate the ATE
+# These two ways are equivalent (why?)
+
+mean(y1-y0)
+mean(y1) - mean(y0)
+
+# Now, let's create one possible random assignment vector
+# for a binary treatment with p=0.5
+d <- rbinom(n, 1, 0.5)
+
+# Let's create the observed outcome variable, using the switching equation
+y <- y1*d+(1-d)*y0
+
+# Now, let's approximate the ATE with a difference-in-means
+# Think: why cannot we simply use mean(y1-y0 anymore?)
+# Think: why does this ATEhat differs from the ATE calculated above?
+
+mean(y[d==1]) - mean(y[d==0])
+```
+
+Similarly, plots will be rendered in the final document if you include their code in this document:
+
+```{r}
+# Simple plot example
+# First, let's combine our data in a single data.frame
+
+data <- data.frame(y1,y0,y,d)
+data$missing <- ifelse(d==1, "y0","y1")
+
+library(ggplot2) # Load ggplot2 package
+
+# Create a scatterplot, highlighting observed vs missing outcomes
+ggplot(data, aes(x = y0, y = y1, color = missing)) +
+  geom_point(alpha = 0.25)
+```
+
+
+
+For more details, please consult the `Quarto` documentation linked in the syllabus.
+
+\newpage
 
 # Section 1: Potential Outcomes and Experiments
 
-## Answers Exercises from Chapter 1 of Gerber and Green's *Field Experiments*
+Data from the book needed to answer some questions, and `R` code that could be useful, can be found in [https://isps.yale.edu/FEDAI](https://isps.yale.edu/FEDAI)
 
-## Answers Exercises from Chapter 2 of Gerber and Green's *Field Experiments*
+## Answer Exercises from Chapter 1 in Gerber and Green's *Field Experiments*
 
-## Extra credit: Answer Exercises from Chapter 3 of Gerber and Green's *Field Experiments*
+Here your answers
 
+## Answer Exercises from Chapter 2 in Gerber and Green's *Field Experiments*
+
+Here your answers. 
+
+
+## Extra credit: Answer Exercises 1 to 8 from Chapter 3 in Gerber and Green's *Field Experiments*
+
+Here your answers
 
 \newpage
 
