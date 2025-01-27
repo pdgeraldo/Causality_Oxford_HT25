@@ -4,7 +4,8 @@ author: "Your name here"
 date: last-modified
 format: 
   pdf:
-    number-sections: false
+    include-in-header: preamble.tex
+    number-sections: true
 ---
 
 ## General guidelines
@@ -76,24 +77,129 @@ For more details, please consult the `Quarto` documentation linked in the syllab
 
 \newpage
 
-# Section 1: Potential Outcomes and Experiments
+# Potential Outcomes and Experiments
 
 Data from the book needed to answer some questions, and `R` code that could be useful, can be found in [https://isps.yale.edu/FEDAI](https://isps.yale.edu/FEDAI)
 
-## Answer Exercises from Chapter 1 in Gerber and Green's *Field Experiments*
+## 
+
+Answer Exercises from Chapter 1 in Gerber and Green's *Field Experiments*
 
 Here your answers
 
-## Answer Exercises from Chapter 2 in Gerber and Green's *Field Experiments*
+## 
+
+Answer Exercises from Chapter 2 in Gerber and Green's *Field Experiments*
 
 Here your answers. 
 
 
-## Extra credit: Answer Exercises 1 to 8 from Chapter 3 in Gerber and Green's *Field Experiments*
+## Extra credit 
+
+Answer Exercises 1 to 8 from Chapter 3 in Gerber and Green's *Field Experiments*
 
 Here your answers
 
 \newpage
 
-# Section 2: Structural Causal Model
+# Structural Causal Model
+
+Credit: Problems adapted from Onyi Arah's "Logic, causation, and probability".
+
+## 
+Imagine we want to estimate the effect $P(Y|do(1)) - P(Y|do(0)) = P(Y_1) - P(Y_0)$  adjusting for some observed covariates. Please explain both the *backdoor criterion* of covariate selection, and the resulting *adjustment formula* (also known as *backdoor fomula* or *g-fomula*).
+
+##
+
+Please explain the difference between an observational (or pre-intervention) DAG, an interventional DAG, and a testing DAG. Include figures to illustrate the difference.
+
+
+##
+
+Now, consider the following DAGs. Assume all name nodes are measured. For each DAG, briefly discuss or justify whether $P(Y|do(1)) - P(Y|do(0))$ is identifiable or not (i.e., whether we can obtain a unique solution or answer to our causal query if we had infinite data on the measure variables on the DAGs).
+
+\begin{center}
+\captionof{figure}{DAG (a)}
+\begin{minipage}{0.48\linewidth}
+\includegraphics[width=\linewidth]{DAG1a.png}
+\captionof*{figure}{\textbf{(A)} A pre-intervention DAG $G$}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\linewidth}
+\includegraphics[width=\linewidth]{DAG1a_test.png}
+\captionof*{figure}{\textbf{(B)} A test DAG $G_{\underline{X}}$}
+\end{minipage}
+\label{fig:DAG1a}
+\end{center}
+
+##
+
+\begin{center}
+\captionof{figure}{DAG (b)}
+\begin{minipage}{0.48\linewidth}
+\includegraphics[width=\linewidth]{DAG1b.png}
+\captionof*{figure}{\textbf{(A)} A pre-intervention DAG $G$}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\linewidth}
+\includegraphics[width=\linewidth]{DAG1b_test.png}
+\captionof*{figure}{\textbf{(B)} A test DAG $G_{\underline{X}}$}
+\end{minipage}
+\label{fig:DAG1b}
+\end{center}
+
+
+##
+
+\begin{center}
+\captionof{figure}{DAG (c)}
+\begin{minipage}{0.48\linewidth}
+\includegraphics[width=\linewidth]{DAG1c.png}
+\captionof*{figure}{\textbf{(A)} A pre-intervention DAG $G$}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\linewidth}
+\includegraphics[width=\linewidth]{DAG1c_test.png}
+\captionof*{figure}{\textbf{(B)} A test DAG $G_{\underline{X}}$}
+\end{minipage}
+\label{fig:DAG1c}
+\end{center}
+
+
+##
+
+\begin{center}
+\captionof{figure}{DAG (d)}
+\begin{minipage}{0.48\linewidth}
+\includegraphics[width=\linewidth]{DAG1d.png}
+\captionof*{figure}{\textbf{(A)} A pre-intervention DAG $G$}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.48\linewidth}
+\includegraphics[width=\linewidth]{DAG1d_test.png}
+\captionof*{figure}{\textbf{(B)} A test DAG $G_{\underline{X}}$}
+\end{minipage}
+\label{fig:DAG1d}
+\end{center}
+
+## 
+Consider DAG 2 below
+
+\begin{center}
+\captionof{figure}{DAG 2}
+\includegraphics[width=0.4\linewidth]{DAG2.png}
+\label{fig:DAG2}
+\end{center}
+
+a. Please write out (factorize) the joint probability distribution for the nodes in DAG 2.
+
+
+b. Please write out the (non-parametric) structural equations according to DAG 2. Define any variables you introduce. 
+
+
+c. Write an empirical analogue of the average treatment effect of $X$ on $Y$ based on DAG 2. Assume that all variables are binary in this question.
+
+
+e. Now consider intervening on $Z$ so that $Z=z^*$. Please show the intervention DAG, and rewrite the structural equations from part b to reflect this intervention scenario.
+
 
