@@ -79,13 +79,13 @@ Research is a collaborative practice. You can work with your classmates, discuss
 
 Problem sets can feel long and relatively challenging. Do not wait until the last minute to start them! The ideal would be to work on them through the two-week period as you read and attend lectures. I recommend answering as much as you can during the time given, and submit what you have by the deadline, instead of asking for extensions. Extensions will only cause you to have more work later. Try your best, but do not lose sleep over a problem set.
 
-* Problem set 1: handed on January 20th, submit by January 31st
+* Problem set 1: assigned on January 27th (week 2), submit by February 10th (week 4)
 
-* Problem set 2: handed on February 3rd, submit by February 14th
+* Problem set 2: assigned on February 10th (week 4), submit by February 24th (week 6)
 
-* Problem set 3: handed on February 17th, submit by February 28th
+* Problem set 3: assigned on February 24th (week 6), submit by March 10th (week 8)
 
-* Problem set 4: handed on March 3rd, submit by March 14th
+* Problem set 4: assigned on March 10th (week 8), submit by March 24th (week 10)
 
 For each problem set, you will receive a pdf version and the source code as a .qmd file. You are expected to submit your answers both as a compiled pdf document and include your own .qmd source file (details below).
 
