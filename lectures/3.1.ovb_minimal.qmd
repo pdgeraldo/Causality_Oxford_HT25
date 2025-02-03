@@ -1,0 +1,596 @@
+---
+title: "Omitted Variable Bias (in 10 mins)"
+author: "Pablo Geraldo Bastías"
+logo: "https://fundit.fr/sites/default/files/styles/max_650x650/public/institutions/capture-decran-2023-07-07-162216.png?itok=1CkwlJEu"
+include-in-header:
+  - text: |
+      <style>
+      .reveal .slide-logo {
+        max-height: unset;
+        height: 80px;
+      }
+      </style>
+footer: "OVB - A minimal introduction"
+date: 02/03/2025
+date-format: long
+format: 
+  revealjs:
+    theme: simple
+    width: 1600
+    height: 900
+    transition: slide
+    slide-number: c/t
+    chalkboard: true
+    auto-stretch: false
+callout-appearance: minimal
+---
+
+
+## OVB is everywhere! 
+
+:::{.r-stack}
+
+![](img/ovb_greta_effect.png){.fragment}
+
+![](img/ovb_mortality_museums.png){.fragment}
+
+![](img/ovb_walking.jpg){.fragment}
+
+![](img/ovb_opioids.jpg){.fragment width="750"}
+
+:::
+
+
+# The anatomy of OVB {background-color="#00a191"}
+
+## A familiar example
+
+Let's assume we want to estimate the causal effect of having a college degree ($X$) on income ($Y$), and we have observational data on these variables.
+
+The unconditional association between $X$ and $Y$ is not the true causal effect, as it it *biased* (or [*confounded*]{.fragment .highlight-red}) by other variables $W$ such that:
+
+  - They affect who gets a college degree ($W \rightarrow X$), and
+  
+  - They affect the income of individuals ($W \rightarrow Y$)
+  
+  
+Common examples of such variables in the literature are family background and ability.
+
+The omitted variable bias problem arises when we either [*do not know*]{.fragment .highlight-red} the appropriate $W$s, or knowing them, we have not [*measured*]{.fragment .highlight-red} them.
+
+<br>
+
+:::{.fragment .highlight-blue}
+
+***When is omitting variables not problem?***
+
+OVB is a *causal* concept. If you care about associations or predictions, then it is not an issue!
+
+:::
+
+
+## OVB structure {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {.left style="margin-top: 200px;"}
+$$Y_i \color{white}{=  \alpha + {\beta} X_i + \gamma W_i + \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yonly.svg)
+
+:::
+
+:::
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha \color{white}{+ {\beta} X_i + \gamma W_i + \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yonly.svg)
+
+:::
+
+:::
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \color{blue}{\beta} X_i \color{white}{+ \gamma W_i + \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yx_beta.svg)
+:::
+
+:::
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \beta X_i \color{white}{+ \gamma W_i + \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_beta.svg)
+:::
+
+:::
+
+
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \beta X_i + \color{red}{\gamma} W_i \color{white}{+ \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_gamma.svg)
+:::
+
+:::
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \beta X_i + \color{red}{\gamma} W_i \color{white}{+ \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_block.svg)
+:::
+
+:::
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \beta X_i + \color{red}{\gamma} W_i \color{white}{+ \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_block2.svg)
+:::
+
+:::
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + {\beta} X_i + \gamma W_i + \epsilon_i$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxwe_beta.svg)
+
+
+:::
+
+:::
+
+::: {.fragment}
+$\text{corr}(X_i; \epsilon_i) = 0$
+:::
+
+:::{.fragment}
+$X \rightarrow \dots \leftarrow \epsilon$ is $d-$separated
+:::
+
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \alpha + \beta X_i + \gamma W_i + \epsilon_i}$$
+
+$$Y_i =  \zeta + \tilde{\beta} X_i + u_i$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu_tilde.svg)
+:::
+
+:::
+
+
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \alpha + \beta X_i +  \color{red}{\gamma W_i + \epsilon_i}}$$
+
+$$Y_i =  \zeta + \tilde{\beta} X_i + \color{red}{u_i}$$
+
+
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2_tilde.svg)
+:::
+
+:::
+
+
+:::{.fragment}
+$\text{corr}(X_i ; u_i) \neq 0$
+:::
+
+:::{.fragment}
+$X \rightarrow u$ is $d-$connected
+:::
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \color{red}{\tilde{\beta}} X_i + u_i}$$
+
+$$
+\color{red}{\tilde{\beta}} = \frac{\text{Cov}(X_i , Y_i)}{\text{Var}(X_i)}
+$$
+
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2.svg)
+:::
+
+:::
+
+
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \tilde{\beta} X_i + u_i}$$
+
+$$
+\tilde{\beta} = \frac{\text{Cov}(X_i , \color{green}{Y_i})}{\text{Var}(X_i)}
+$$
+
+$$
+= \frac{\text{Cov}(X_i, \color{green}{\alpha + \beta X_i + \gamma W_i + \epsilon_i})}{\text{Var}(X_i)}
+$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2.svg)
+:::
+
+:::
+
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \tilde{\beta} X_i + u_i}$$
+
+$$
+\tilde{\beta} = \frac{\text{Cov}(X_i , Y_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \frac{\color{green}{\text{Cov}(X_i}, \alpha + \color{blue}{\beta} X_i + \color{red}{\gamma} \color{green}{W_i} + \epsilon_i)}{\color{green}{\text{Var}(X_i)}}
+$$
+
+$$
+= \color{blue}{\beta} + \underbrace{\color{red}{\gamma} \times \color{green}{\frac{\text{Cov}(X_i,W_i)}{\text{Var}(X_i)}}}_{\text{Bias}}
+$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2.svg)
+:::
+
+:::
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \color{red}{\tilde{\beta}} X_i + u_i}$$
+
+$$
+\tilde{\beta} = \frac{\text{Cov}(X_i , Y_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \frac{\text{Cov}(X_i, \alpha + \beta X_i + \gamma W_i + \epsilon_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \color{blue}{\beta} + \underbrace{\color{red}{\gamma}}_{\text{Impact}} \times \underbrace{\color{green}{\delta}}_{\text{Imbalance}}
+$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2.svg)
+:::
+
+:::
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \color{red}{\tilde{\beta}} X_i + u_i}$$
+
+$$
+\tilde{\beta} = \frac{\text{Cov}(X_i , Y_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \frac{\text{Cov}(X_i, \alpha + \beta X_i + \gamma W_i + \epsilon_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \color{blue}{\beta} + \underbrace{\color{red}{\gamma}}_{\text{Impact}} \times \underbrace{\color{green}{\delta}}_{\text{Imbalance}}
+$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_delta.svg)
+:::
+
+:::
+
+
+
+# What to do? {background-color="#00a191"}
+
+## Wrong answer
+### Include whatever and as much as you have!
+
+![](img/ovb_authors.jpg){.center}
+
+## Deal with imbalance ($\delta$) *by design*
+
+:::{.r-stack}
+
+:::{.fragment}
+**RCT**: An ideal approach would be to randomly assign who gets the treatment of interest and who doesn't. This breaks the $W \rightarrow X$ link
+
+**Quasi-Exp**: Sometimes, it is possible to find an event or sub-population in which the treatment is *as-good-as-random*. In theory, this should also deals with $\delta$
+
+![](img/ovb_iv.svg){.fragment .center}
+:::
+
+
+![](img/ovb_rct.png){.fragment .center}
+
+:::
+
+## Benchmarking and sensitivity
+
+Instead of assuming away OVB, we can try to bound the estimated treatment effect under plausible assumptions around its magnitude
+
+:::{.r-stack}
+
+:::{.fragment}
+**Worst-case bounds:** Assume a $W$ perfectly predicting $Y$ (strongest possible $\gamma$), and ask how much the imbalance ($\delta$) should be to change our conclusions
+  
+**Simulate:** Use a range of $\gamma \times \delta$ values to simulate how the results would change for a range of values of OVB
+
+**Benchmark:** Use included variables to benchmark the magnitude of the possibly excluded factors
+:::
+
+![](img/ovb_cinelli_hazlett.png){.fragment .center}
+
+:::
+
+## Summary and beyond: When is OVB an issue?
+
+* Ask yourself if you're trying to get a causal relationship
+
+  - Define your treatment with enough detail so you can ask, [*what factors affecting both the outcome and who gets the treatment*]{.fragment .highlight-blue} may be missing
+  
+  - Bias is always [*relative to a target quantity*]{.fragment .highlight-blue}
+
+
+* Remember: there is always omission, but it's not always a problem!
+  
+  - **Outcome**: efficiency loss, but not necessarily bias
+  
+  - **Treatment-related**: it may even be better (bias amplification)
+  
+  - [Both? Danger zone!]{.fragment .highlight-red}
+
+* Bias *relative* to a target quantity!
+
+
+## {.center}
+
+![](https://imgs.xkcd.com/comics/confounding_variables.png){width="1500"}
+
+
+# {background-color="#00a191"}
+
+
+
+
