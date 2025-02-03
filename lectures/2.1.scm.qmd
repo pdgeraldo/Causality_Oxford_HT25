@@ -10,7 +10,7 @@ include-in-header:
         height: 100px;
       }
       </style>
-footer: "Potential outcomes and experiments"
+footer: "Structural Causal Model"
 date: 01/27/2025
 date-format: long
 format: 
@@ -111,7 +111,7 @@ When we say the treatment assignment is [**strongly ignorable**]{style="color:re
 
 * What kind of criteria should we use in our own research to judge if we are getting what we are looking for?
 
-Here is where DAGs shine, offering a graphical criteria that is equivalent to the unconfoundedness statement, the *backdoor criterion*.
+Here is where DAGs shine, offering a graphical criteria that is equivalent to the unconfoundedness statement, the [*backdoor criterion*]{style="color:red"}.
 
 
 ## Structural Causal Model (SCM)
@@ -136,7 +136,7 @@ Unifying approach to causal inference, developed by Pearl, Robins, among others,
 
 Probabilistic graphical models are mathematical objects that represent relations among variables (probability factorization) 
 
-They are compounded by two ingredients: **nodes** (vertices) and **edges** (links)
+They are compounded by two ingredients: [**nodes**]{style="color:green"} (vertices) and [**edges**]{style="color:green"} (links)
 
 Directed Acyclic Graphs (DAGs) are one class of graphical models, with the following characteristics:
 
@@ -161,11 +161,11 @@ Basically, this happen when we assume that no pair of nodes share a common ances
 
 ## Paths
 
-We can go from one variable to another following a *path* along the edges 
+We can go from one variable to another following a [*path*]{style="color:blue"} along the edges 
 
-When you can traverse a path without colliding into an edge in the opposite direction we call it a **connecting path** that transmit information
+When you can traverse a path without colliding into an edge in the opposite direction we call it a [**connecting path**]{style="color:green"} that transmit information
 
-When you encounter an edge pointing into the opposite direction along a path we call it a **blocking path** that do not transmit information
+When you encounter an edge pointing into the opposite direction along a path we call it a [**blocking path**]{style="color:red"} that do not transmit information
 
 
 :::{.callout-warning}
@@ -173,28 +173,230 @@ When you encounter an edge pointing into the opposite direction along a path we 
 $d-$connection in the graph implies association between variables in the data, while $d-$separation implies their independence
 :::
 
+Keep in mind: sometimes it is **not** about the variables (alone), but about the paths that, together, they create!
 
 ## Building blocks
 
-* A **chain**, in which you can travel from $X$ to $Y$ through $M$, is a $d-$connected path: $$X \rightarrow M \rightarrow Y$$
+* A [**chain**]{style="color:green"}, in which you can travel from $X$ to $Y$ through $M$, is a $d-$connected path. All variables are [*marginally associated*]{style="color:green"}
 
-* A **fork**, in which you can go from a common cause $W$ to both $X$ and $Y$ is a $d-$connected path: $$X \leftarrow W \rightarrow Y$$
+$$X \color{green}{\rightarrow} M \color{green}{\rightarrow} Y$$
 
-* A **collider**, in which you can't go from $X$ to $Y$ due to two edges pointing into a third variable $C$, is a $d-$separated path: $$X \rightarrow C \leftarrow Y$$
-
-
-## Adjustment
-
-By adjusting for a variable (represented by a box in the graph), we can turn connecting into blocking paths and vice versa:
-
-* When you adjust for the intermediate variable $M$ in a chain, $X$ and $Y$ become conditionally independent: $$X \rightarrow \boxed{M} \rightarrow Y$$
-
-* When you adjust for the common cause $W$ in a fork, $X$ and $Y$ become conditionally independent: $$X \leftarrow \boxed{W} \rightarrow Y$$
-
-* When you adjust for a collider variable $C$, the pair $X$ and $Y$ become conditionally associated: $$X \cdots \boxed{C} \cdots Y$$
+* A [**fork**]{style="color:green"}, in which you can go from a common cause $W$ to both $X$ and $Y$ is a $d-$connected path. All variables are [*marginally associated*]{style="color:green"}
 
 
-## Confounding paths
+$$X \color{green}{\leftarrow} W \color{green}{\rightarrow} Y$$
+
+* A [**collider**]{style="color:red"}, in which you can't go from $X$ to $Y$ due to two edges pointing into a third variable $C$, is a $d-$separated path. $X$ and $Y$ are [*marginally independent*]{style="color:red"}
+ 
+
+$$X \color{red}{\rightarrow} C \color{red}{\leftarrow} Y$$
+
+
+## Flipping the switch
+
+* When you adjust for the intermediate variable $M$ in a chain, $X$ and $Y$ become $d-$separated and, therefore, [*conditonally independent*]{style="color:red"}: 
+
+$$X \rightarrow \boxed{M} \color{red}{\rightarrow} Y$$
+
+* When you adjust for the common cause $W$ in a fork, $X$ and $Y$ become $d-$separated and, therefore, [*conditionally independent*]{style="color:red"}: 
+
+$$X \color{red}{\leftarrow} \boxed{W} \color{red}{\rightarrow} Y$$
+
+* When you adjust for a collider variable $C$, the pair $X$ and $Y$ become $d-$connected and, therefore, [*conditionally associated*]{style="color:green"}: 
+
+$$X \color{green}{\cdots} \boxed{C} \color{green}{\cdots} Y$$
+
+## Alternative representations
+
+<br>
+
+A graphical model is [one possible]{style="color:green;"} representation of a causal system. 
+
+In the [Structural Causal Model]{style="color:blue;"}, we will sometimes appeal to other alternative, but equivalent, representations. Depending on what do you want to achieve, different representations may be more or less useful
+
+In particular, we will look at:
+
+* A set of [structural equations]{.fragment .highlight-blue} indicating functional dependencies between variables
+
+* A [truncated factorization]{.fragment .highlight-blue} of the joint probability distribution of the variables in the graph:
+
+$$P(X_1, X_2, \dots, X_n) = \prod_i P(X_i|pa_i)$$
+
+:::aside
+This is call a "Markov condition": the future is independent of the remote past conditional on the immediate past!
+:::
+
+
+## Alternative representations: chaining paths
+
+<br>
+
+:::{.columns}
+
+:::{.column width=50%}
+
+[**Graphical model**]{style="color:blue;"}
+
+$$X \rightarrow M \rightarrow Y$$
+
+<br>
+
+| [**Structural Equations**]{style="color:blue;"} |
+|-----|
+| $X = f_x(U_x)$ |
+| $M = f_m(X, U_m)$ |
+| $Y = f_y(M, U_y)$ |
+
+
+
+:::aside
+Note: Independent errors can be dropped from the DAG!
+:::
+
+:::
+
+:::{.column width=50%}
+
+
+[**Truncated factorization**]{style="color:blue;"}
+
+
+$$P(X,M,Y) = P(X) P(M|X) P (Y|M)$$
+
+<br>
+
+**Natural factorization**
+
+(chain rule)
+
+$P(X,M,Y) = P(X|M,Y)P(M|Y)P(Y)$
+
+$P(X,M,Y) = P(M|X,Y)P(X|Y)P(Y)$
+
+$P(X,M,Y) = P(M|X,Y)P(Y|X)P(X)$
+
+$P(X,M,Y) = P(Y|X,M)P(X|M)P(M)$
+
+:::
+
+:::
+
+
+
+## Alternative representations: forking paths
+
+<br>
+
+:::{.columns}
+
+:::{.column width=50%}
+
+[**Graphical model**]{style="color:blue;"}
+
+$$X \leftarrow W \rightarrow Y$$
+
+<br>
+
+| [**Structural Equations**]{style="color:blue;"} |
+|-----|
+| $X = f_x(W, U_x)$ |
+| $W = f_w(U_w)$ |
+| $Y = f_y(W, U_y)$ |
+
+
+
+:::aside
+Note: Independent errors can be dropped from the DAG!
+:::
+
+:::
+
+:::{.column width=50%}
+
+
+[**Truncated factorization**]{style="color:blue;"}
+
+
+$$P(X,W,Y) = P(W) P(X|W) P (Y|W)$$
+
+<br>
+
+**Natural factorization**
+
+(chain rule)
+
+$P(X,W,Y) = P(X|W,Y)P(W|Y)P(Y)$
+
+$P(X,W,Y) = P(W|X,Y)P(X|Y)P(Y)$
+
+$P(X,W,Y) = P(W|X,Y)P(Y|X)P(X)$
+
+$P(X,W,Y) = P(Y|X,W)P(X|W)P(W)$
+
+:::
+
+:::
+
+
+
+## Alternative representations: colliding paths
+
+<br>
+
+:::{.columns}
+
+:::{.column width=50%}
+
+[**Graphical model**]{style="color:blue;"}
+
+$$X \rightarrow C \leftarrow Y$$
+
+<br>
+
+| [**Structural Equations**]{style="color:blue;"} |
+|-----|
+| $X = f_x(U_x)$ |
+| $C = f_c(X, Y, U_c)$ |
+| $Y = f_y(U_y)$ |
+
+
+
+:::aside
+Note: Independent errors can be dropped from the DAG!
+:::
+
+:::
+
+:::{.column width=50%}
+
+
+[**Truncated factorization**]{style="color:blue;"}
+
+
+$$P(X,C,Y) = P(X) P(Y) P (C|X,Y)$$
+
+<br>
+
+**Natural factorization**
+
+(chain rule)
+
+$P(X,C,Y) = P(X|C,Y)P(C|Y)P(Y)$
+
+$P(X,C,Y) = P(C|X,Y)P(X|Y)P(Y)$
+
+$P(X,C,Y) = P(C|X,Y)P(Y|X)P(X)$
+
+$P(X,C,Y) = P(Y|X,C)P(X|C)P(C)$
+
+:::
+
+:::
+
+# Practice {background-color="#17a091"}
+
+
+## Forking paths
 
 
 :::{.columns}
@@ -215,6 +417,7 @@ Are $X$ and $Y$ marginally independent?
 Are they conditionally independent?
 :::
 
+
 :::{.column width=50%}
 
 
@@ -229,7 +432,7 @@ $$X \leftarrow W \rightarrow Y$$
 
 :::
 
-## Confounding paths
+## Forking paths
 
 :::{.columns}
 
@@ -266,7 +469,7 @@ $$X \leftarrow \boxed{W} \rightarrow Y$$
 :::
 
 
-## Confounding paths
+## Forking paths
 
 :::{.columns}
 
@@ -301,7 +504,7 @@ $$X \leftarrow W \rightarrow Y$$
 ---
 
 
-## Mediating paths
+## Chaining paths
 
 :::{.columns}
 
@@ -336,7 +539,7 @@ $$X \rightarrow M \rightarrow Y$$
 ---
 
 
-## Mediating paths
+## Chaining paths
 
 :::{.columns}
 
@@ -679,6 +882,34 @@ $$P(Y|do(x)) = \sum_w P(Y|X,W)P(W)$$
 Pearl, *Causality*, pp.79-81
 :::
 ---
+
+
+## Short activity (5 mins) {background-color="#692044"}
+
+Can you check, using the rules we practiced, if it is possible to identify the causal effect of $D$ on $Y$ in the following graphs?
+
+Model 1: 
+
+$D \rightarrow M$
+
+$M \rightarrow Y$
+
+$D \leftarrow (U) \rightarrow Y$
+
+Where $(U)$ is unobserved, and therefore, it cannot be adjusted for
+
+
+Model 2:
+
+$D \rightarrow Y$
+
+$Z \rightarrow D$
+
+$D \leftarrow (U) \rightarrow Y$
+
+
+Where $(U)$ is unobserved, and therefore, it cannot be adjusted for
+
 
 
 ## SCM: Key insights

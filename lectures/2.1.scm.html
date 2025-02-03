@@ -417,7 +417,7 @@ Pablo Geraldo Bastías
 <li><p>What type of criteria should we use when discussing others’ causal claims?</p></li>
 <li><p>What kind of criteria should we use in our own research to judge if we are getting what we are looking for?</p></li>
 </ul>
-<p>Here is where DAGs shine, offering a graphical criteria that is equivalent to the unconfoundedness statement, the <em>backdoor criterion</em>.</p>
+<p>Here is where DAGs shine, offering a graphical criteria that is equivalent to the unconfoundedness statement, the <span style="color:red"><em>backdoor criterion</em></span>.</p>
 </section>
 <section id="structural-causal-model-scm" class="slide level2">
 <h2>Structural Causal Model (SCM)</h2>
@@ -434,7 +434,7 @@ Pablo Geraldo Bastías
 <section id="directed-acyclic-graphs-dags" class="slide level2">
 <h2>Directed Acyclic Graphs (DAGs)</h2>
 <p>Probabilistic graphical models are mathematical objects that represent relations among variables (probability factorization)</p>
-<p>They are compounded by two ingredients: <strong>nodes</strong> (vertices) and <strong>edges</strong> (links)</p>
+<p>They are compounded by two ingredients: <span style="color:green"><strong>nodes</strong></span> (vertices) and <span style="color:green"><strong>edges</strong></span> (links)</p>
 <p>Directed Acyclic Graphs (DAGs) are one class of graphical models, with the following characteristics:</p>
 <div class="fragment">
 <ul>
@@ -461,9 +461,9 @@ Pablo Geraldo Bastías
 </section>
 <section id="paths" class="slide level2">
 <h2>Paths</h2>
-<p>We can go from one variable to another following a <em>path</em> along the edges</p>
-<p>When you can traverse a path without colliding into an edge in the opposite direction we call it a <strong>connecting path</strong> that transmit information</p>
-<p>When you encounter an edge pointing into the opposite direction along a path we call it a <strong>blocking path</strong> that do not transmit information</p>
+<p>We can go from one variable to another following a <span style="color:blue"><em>path</em></span> along the edges</p>
+<p>When you can traverse a path without colliding into an edge in the opposite direction we call it a <span style="color:green"><strong>connecting path</strong></span> that transmit information</p>
+<p>When you encounter an edge pointing into the opposite direction along a path we call it a <span style="color:red"><strong>blocking path</strong></span> that do not transmit information</p>
 <div class="callout callout-warning callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -477,26 +477,183 @@ Pablo Geraldo Bastías
 </div>
 </div>
 </div>
+<p>Keep in mind: sometimes it is <strong>not</strong> about the variables (alone), but about the paths that, together, they create!</p>
 </section>
 <section id="building-blocks" class="slide level2">
 <h2>Building blocks</h2>
 <ul>
-<li><p>A <strong>chain</strong>, in which you can travel from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> through <span class="math inline">\(M\)</span>, is a <span class="math inline">\(d-\)</span>connected path: <span class="math display">\[X \rightarrow M \rightarrow Y\]</span></p></li>
-<li><p>A <strong>fork</strong>, in which you can go from a common cause <span class="math inline">\(W\)</span> to both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a <span class="math inline">\(d-\)</span>connected path: <span class="math display">\[X \leftarrow W \rightarrow Y\]</span></p></li>
-<li><p>A <strong>collider</strong>, in which you can’t go from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> due to two edges pointing into a third variable <span class="math inline">\(C\)</span>, is a <span class="math inline">\(d-\)</span>separated path: <span class="math display">\[X \rightarrow C \leftarrow Y\]</span></p></li>
+<li>A <span style="color:green"><strong>chain</strong></span>, in which you can travel from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> through <span class="math inline">\(M\)</span>, is a <span class="math inline">\(d-\)</span>connected path. All variables are <span style="color:green"><em>marginally associated</em></span></li>
 </ul>
-</section>
-<section id="adjustment" class="slide level2">
-<h2>Adjustment</h2>
-<p>By adjusting for a variable (represented by a box in the graph), we can turn connecting into blocking paths and vice versa:</p>
+<p><span class="math display">\[X \color{green}{\rightarrow} M \color{green}{\rightarrow} Y\]</span></p>
 <ul>
-<li><p>When you adjust for the intermediate variable <span class="math inline">\(M\)</span> in a chain, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> become conditionally independent: <span class="math display">\[X \rightarrow \boxed{M} \rightarrow Y\]</span></p></li>
-<li><p>When you adjust for the common cause <span class="math inline">\(W\)</span> in a fork, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> become conditionally independent: <span class="math display">\[X \leftarrow \boxed{W} \rightarrow Y\]</span></p></li>
-<li><p>When you adjust for a collider variable <span class="math inline">\(C\)</span>, the pair <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> become conditionally associated: <span class="math display">\[X \cdots \boxed{C} \cdots Y\]</span></p></li>
+<li>A <span style="color:green"><strong>fork</strong></span>, in which you can go from a common cause <span class="math inline">\(W\)</span> to both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is a <span class="math inline">\(d-\)</span>connected path. All variables are <span style="color:green"><em>marginally associated</em></span></li>
 </ul>
+<p><span class="math display">\[X \color{green}{\leftarrow} W \color{green}{\rightarrow} Y\]</span></p>
+<ul>
+<li>A <span style="color:red"><strong>collider</strong></span>, in which you can’t go from <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> due to two edges pointing into a third variable <span class="math inline">\(C\)</span>, is a <span class="math inline">\(d-\)</span>separated path. <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are <span style="color:red"><em>marginally independent</em></span></li>
+</ul>
+<p><span class="math display">\[X \color{red}{\rightarrow} C \color{red}{\leftarrow} Y\]</span></p>
 </section>
-<section id="confounding-paths" class="slide level2">
-<h2>Confounding paths</h2>
+<section id="flipping-the-switch" class="slide level2">
+<h2>Flipping the switch</h2>
+<ul>
+<li>When you adjust for the intermediate variable <span class="math inline">\(M\)</span> in a chain, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> become <span class="math inline">\(d-\)</span>separated and, therefore, <span style="color:red"><em>conditonally independent</em></span>:</li>
+</ul>
+<p><span class="math display">\[X \rightarrow \boxed{M} \color{red}{\rightarrow} Y\]</span></p>
+<ul>
+<li>When you adjust for the common cause <span class="math inline">\(W\)</span> in a fork, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> become <span class="math inline">\(d-\)</span>separated and, therefore, <span style="color:red"><em>conditionally independent</em></span>:</li>
+</ul>
+<p><span class="math display">\[X \color{red}{\leftarrow} \boxed{W} \color{red}{\rightarrow} Y\]</span></p>
+<ul>
+<li>When you adjust for a collider variable <span class="math inline">\(C\)</span>, the pair <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> become <span class="math inline">\(d-\)</span>connected and, therefore, <span style="color:green"><em>conditionally associated</em></span>:</li>
+</ul>
+<p><span class="math display">\[X \color{green}{\cdots} \boxed{C} \color{green}{\cdots} Y\]</span></p>
+</section>
+<section id="alternative-representations" class="slide level2">
+<h2>Alternative representations</h2>
+<p><br></p>
+<p>A graphical model is <span style="color:green;">one possible</span> representation of a causal system.</p>
+<p>In the <span style="color:blue;">Structural Causal Model</span>, we will sometimes appeal to other alternative, but equivalent, representations. Depending on what do you want to achieve, different representations may be more or less useful</p>
+<p>In particular, we will look at:</p>
+<ul>
+<li><p>A set of <span class="fragment highlight-blue">structural equations</span> indicating functional dependencies between variables</p></li>
+<li><p>A <span class="fragment highlight-blue">truncated factorization</span> of the joint probability distribution of the variables in the graph:</p></li>
+</ul>
+<p><span class="math display">\[P(X_1, X_2, \dots, X_n) = \prod_i P(X_i|pa_i)\]</span></p>
+
+<aside><div>
+<p>This is call a “Markov condition”: the future is independent of the remote past conditional on the immediate past!</p>
+</div></aside></section>
+<section id="alternative-representations-chaining-paths" class="slide level2">
+<h2>Alternative representations: chaining paths</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span style="color:blue;"><strong>Graphical model</strong></span></p>
+<p><span class="math display">\[X \rightarrow M \rightarrow Y\]</span></p>
+<p><br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><span style="color:blue;"><strong>Structural Equations</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X = f_x(U_x)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(M = f_m(X, U_m)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y = f_y(M, U_y)\)</span></td>
+</tr>
+</tbody>
+</table>
+
+</div><div class="column" style="width:50%;">
+<p><span style="color:blue;"><strong>Truncated factorization</strong></span></p>
+<p><span class="math display">\[P(X,M,Y) = P(X) P(M|X) P (Y|M)\]</span></p>
+<p><br></p>
+<p><strong>Natural factorization</strong></p>
+<p>(chain rule)</p>
+<p><span class="math inline">\(P(X,M,Y) = P(X|M,Y)P(M|Y)P(Y)\)</span></p>
+<p><span class="math inline">\(P(X,M,Y) = P(M|X,Y)P(X|Y)P(Y)\)</span></p>
+<p><span class="math inline">\(P(X,M,Y) = P(M|X,Y)P(Y|X)P(X)\)</span></p>
+<p><span class="math inline">\(P(X,M,Y) = P(Y|X,M)P(X|M)P(M)\)</span></p>
+</div></div>
+<aside><div>
+<p>Note: Independent errors can be dropped from the DAG!</p>
+</div></aside></section>
+<section id="alternative-representations-forking-paths" class="slide level2">
+<h2>Alternative representations: forking paths</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span style="color:blue;"><strong>Graphical model</strong></span></p>
+<p><span class="math display">\[X \leftarrow W \rightarrow Y\]</span></p>
+<p><br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><span style="color:blue;"><strong>Structural Equations</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X = f_x(W, U_x)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(W = f_w(U_w)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y = f_y(W, U_y)\)</span></td>
+</tr>
+</tbody>
+</table>
+
+</div><div class="column" style="width:50%;">
+<p><span style="color:blue;"><strong>Truncated factorization</strong></span></p>
+<p><span class="math display">\[P(X,W,Y) = P(W) P(X|W) P (Y|W)\]</span></p>
+<p><br></p>
+<p><strong>Natural factorization</strong></p>
+<p>(chain rule)</p>
+<p><span class="math inline">\(P(X,W,Y) = P(X|W,Y)P(W|Y)P(Y)\)</span></p>
+<p><span class="math inline">\(P(X,W,Y) = P(W|X,Y)P(X|Y)P(Y)\)</span></p>
+<p><span class="math inline">\(P(X,W,Y) = P(W|X,Y)P(Y|X)P(X)\)</span></p>
+<p><span class="math inline">\(P(X,W,Y) = P(Y|X,W)P(X|W)P(W)\)</span></p>
+</div></div>
+<aside><div>
+<p>Note: Independent errors can be dropped from the DAG!</p>
+</div></aside></section>
+<section id="alternative-representations-colliding-paths" class="slide level2">
+<h2>Alternative representations: colliding paths</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span style="color:blue;"><strong>Graphical model</strong></span></p>
+<p><span class="math display">\[X \rightarrow C \leftarrow Y\]</span></p>
+<p><br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><span style="color:blue;"><strong>Structural Equations</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X = f_x(U_x)\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(C = f_c(X, Y, U_c)\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y = f_y(U_y)\)</span></td>
+</tr>
+</tbody>
+</table>
+
+</div><div class="column" style="width:50%;">
+<p><span style="color:blue;"><strong>Truncated factorization</strong></span></p>
+<p><span class="math display">\[P(X,C,Y) = P(X) P(Y) P (C|X,Y)\]</span></p>
+<p><br></p>
+<p><strong>Natural factorization</strong></p>
+<p>(chain rule)</p>
+<p><span class="math inline">\(P(X,C,Y) = P(X|C,Y)P(C|Y)P(Y)\)</span></p>
+<p><span class="math inline">\(P(X,C,Y) = P(C|X,Y)P(X|Y)P(Y)\)</span></p>
+<p><span class="math inline">\(P(X,C,Y) = P(C|X,Y)P(Y|X)P(X)\)</span></p>
+<p><span class="math inline">\(P(X,C,Y) = P(Y|X,C)P(X|C)P(C)\)</span></p>
+</div></div>
+<aside><div>
+<p>Note: Independent errors can be dropped from the DAG!</p>
+</div></aside></section></section>
+<section>
+<section id="practice" class="title-slide slide level1 center" data-background-color="#17a091">
+<h1>Practice</h1>
+
+</section>
+<section id="forking-paths" class="slide level2">
+<h2>Forking paths</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <table class="caption-top">
@@ -527,8 +684,8 @@ Pablo Geraldo Bastías
 <p><span class="math display">\[X \leftarrow W \rightarrow Y\]</span></p>
 </div></div>
 </section>
-<section id="confounding-paths-1" class="slide level2">
-<h2>Confounding paths</h2>
+<section id="forking-paths-1" class="slide level2">
+<h2>Forking paths</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <table class="caption-top">
@@ -560,8 +717,8 @@ Pablo Geraldo Bastías
 <p><span class="math display">\[X \leftarrow \boxed{W} \rightarrow Y\]</span></p>
 </div></div>
 </section>
-<section id="confounding-paths-2" class="slide level2">
-<h2>Confounding paths</h2>
+<section id="forking-paths-2" class="slide level2">
+<h2>Forking paths</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <table class="caption-top">
@@ -592,8 +749,8 @@ Pablo Geraldo Bastías
 <p><span class="math display">\[X \leftarrow W \rightarrow Y\]</span></p>
 </div></div>
 </section>
-<section id="mediating-paths" class="slide level2">
-<h2>Mediating paths</h2>
+<section id="chaining-paths" class="slide level2">
+<h2>Chaining paths</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <table class="caption-top">
@@ -625,8 +782,8 @@ Pablo Geraldo Bastías
 <p><span class="math display">\[X \rightarrow M \rightarrow Y\]</span></p>
 </div></div>
 </section>
-<section id="mediating-paths-1" class="slide level2">
-<h2>Mediating paths</h2>
+<section id="chaining-paths-1" class="slide level2">
+<h2>Chaining paths</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <table class="caption-top">
@@ -963,6 +1120,20 @@ Pablo Geraldo Bastías
 <aside><div>
 <p>Pearl, <em>Causality</em>, pp.79-81</p>
 </div></aside></section>
+<section id="short-activity-5-mins" class="slide level2" data-background-color="#692044">
+<h2>Short activity (5 mins)</h2>
+<p>Can you check, using the rules we practiced, if it is possible to identify the causal effect of <span class="math inline">\(D\)</span> on <span class="math inline">\(Y\)</span> in the following graphs?</p>
+<p>Model 1:</p>
+<p><span class="math inline">\(D \rightarrow M\)</span></p>
+<p><span class="math inline">\(M \rightarrow Y\)</span></p>
+<p><span class="math inline">\(D \leftarrow (U) \rightarrow Y\)</span></p>
+<p>Where <span class="math inline">\((U)\)</span> is unobserved, and therefore, it cannot be adjusted for</p>
+<p>Model 2:</p>
+<p><span class="math inline">\(D \rightarrow Y\)</span></p>
+<p><span class="math inline">\(Z \rightarrow D\)</span></p>
+<p><span class="math inline">\(D \leftarrow (U) \rightarrow Y\)</span></p>
+<p>Where <span class="math inline">\((U)\)</span> is unobserved, and therefore, it cannot be adjusted for</p>
+</section>
 <section id="scm-key-insights" class="slide level2">
 <h2>SCM: Key insights</h2>
 <ul>
@@ -1012,7 +1183,7 @@ Pablo Geraldo Bastías
 <div class="quarto-auto-generated-content">
 <p><img src="https://fundit.fr/sites/default/files/styles/max_650x650/public/institutions/capture-decran-2023-07-07-162216.png?itok=1CkwlJEu" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>Potential outcomes and experiments</p>
+<p>Structural Causal Model</p>
 </div>
 </div>
 </div>
