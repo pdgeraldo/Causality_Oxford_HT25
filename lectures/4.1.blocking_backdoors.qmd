@@ -247,35 +247,115 @@ It is similar, but kind of in the opposite direction, to the previous strategies
 Recall that the difference-in-means can be viewed as:
 
 $$
-\sum_x E[Y_i | D=1, X]\color{red}{P(X|D=1)} - \sum_x E[Y_i | D=1, X]\color{red}{P(X|D=0)}
+\sum_x E[Y_i | D=1, X]\color{red}{P(X|D=1)} - \sum_x E[Y_i | D=0, X]\color{red}{P(X|D=0)}
 $$
 
-How to solve the discrepancy in the weights?
+[How to solve the discrepancy in the weights?]{style="color:red"}
 
 . . .
 
-We want the weights of the diff-in-means to be $P(X)$ for everyone, so we can re-weight by $\frac{P(D_i)}{P(D_i|X_i)}$ (but, note that this requires a model for $P(D_i|X_i)$)
+We want the weights of the diff-in-means to be $P(X)$ for everyone, so we can re-weight by $\frac{P(D_i)}{P(D_i|X_i)}$ (but, note that this requires a model for $P(D_i|X_i)$!)
 
 ## What about propensity scores?
 
-The weights just used above require estimating a model for the treatment assignment $P(D_i|X_i)$ 
+The weights just mentioned are usually referred as *(stabilized) propensity score weights*. Other names for the same object are *inverse probability of the treatment weighting* or simply *inverse probability weighting* (IPW)
 
-That's why those weights are usually referred as *stabilized propensity score weights*
-
-This will achieve balance in the variables used to estimate the propensity score, *in expectation*
+Those weights require estimating a model for the treatment assignment $P(D_i|X_i)$. In other words, they require we fit a [*propensity score*]{style="color:blue"} model, $P(D_i=1|X_i) = e(X_i)$ (or $\pi(X_i)$)
 
 . . .
 
-But we can also bypass this step, and directly find weights that "balance" (some moments of) the covariates, through optimization approaches --> *calibration*
+Using propensity score for weighting (or matching, or regression adjustment) is based on a simple but powerful result. If:
 
+$$
+\{Y_1,Y_0\} \indep D_i | X_i
+$$
+Then,
 
-This will usually give you balance *in the sample*, up to a tolerance level
+$$
+\{Y_1,Y_0\} \indep D_i | e(X_i)
+$$
 
-. . . 
+. . .
 
-In both cases, it is crucial to check for extreme weights (sometimes a few units are doing all the heavy lifting!)
+The propensity score is a [*balancing score*]{style="color:green"}, that will achieve balance in the variables used to estimate the propensity score, [*in expectation*]{style="color:red"}
+
+## Propensity score weights
+
+For the ATE, the corresponding IPWs are:
+
+$$
+w_i = \frac{D_i}{e(X_i)} + \frac{1-D_i}{1-e(X_i)}
+$$
+
+. . .  
+
+* What would this weights do for the treated units? And for the controls?
+
+* How would you modify these weights to target the ATT?
+
+**Hint**: multiply by $e(X_i)$
+
+:::aside
+Following Chattopadhyay, Hase, and Zubizarreta (2020)
+:::
+
+## Balance
+
+Traditionally, balance in the distribution of covariates is assessed based on the absoluted standardized difference in means (ASMD):
+
+$$
+ASMD(x) = \frac{|\bar{x}_{w,t} - \bar{x}_{w,c}|}{\sqrt{(s^2_t + s^2_c)/2}}
+$$
+
+Chattopadhyay, Hase, and Zubizarreta (2020) proposed using a *targeted* version of this instead: 
+
+$$
+TASMD(x_g) = \frac{|\bar{x}_{w,g} - \bar{x}^*|}{s_g}
+$$
+
+## Balance
+
+Chattopadhyay, Hase, and Zubizarreta (2020) proposed using a *targeted* version of this instead: 
+
+$$
+TASMD(x_g) = \frac{|\bar{x}_{w,g} - \bar{x}^*|}{s_g}
+$$
+
+Which can be further refined as:
+
+$$
+TASMD(B_k(X)_g) = \frac{|\overline{B_k(X)_{w,g}} - \overline{B_k(X)}^*|}{s_g\{B_k(X)\}}
+$$
+
+Where $B_k(X)$ is a transformation of the original covariate.
 
 ## Remember: Propensity score is NOT an identification strategy either!
+
+## Optimization (or calibration) weights
+
+Usually, when using propensity score weights (or matching), what we really want to achieve is balance on covariates. So the process will imply: 
+
+1) estimate a model for $e(X_i)$; 
+
+2) invert and and reweight sample; 
+
+3) check balance; 
+
+4) re-estimate propensity score if necessary.
+
+. . .
+
+Is that the only way?
+
+
+## Optimization (or calibration) weights
+
+But we can also *bypass* these step, and directly search for weights that exactly (up to a tolerance level) "balance" (moments of) the covariates, through optimization approaches $\rightarrow$ [*calibration*]{style="color:red"}!
+
+
+If feasible, this will give you balance [*in the sample*]{style="color:green"}
+
+Also, remember that balance is not the only desirable property: attention to variability vs stability, and positive vs negative weights (interpolation vs extrapolation)
 
 
 ## Common ideas
@@ -298,35 +378,37 @@ Also, beware of residual imbalance! Modeling the outcome can come handy, as we w
 
 # Modeling the outcome expectation {background-color="#E9004C"}
 
-## Regression
+## Regression: look at *the* coefficient!
 
 We can also take a model-based approach to estimate the causal effect of interest
 
-Let's assume that the potential outcomes follow certain functional form:
+For simplicity, let's assume that the potential outcomes follow certain functional form:
 
 $$
 E[Y_i|D_i,X_i] = \beta_0 + \beta_1 D_i + \gamma^{\top}X_i
 $$
 
-Which means that $$E[Y_0|X] = E[Y|D=0,X] = \beta_0 + \gamma^{\top}X_i$$
+Which means that $$E[Y_0|X] = E[Y|D=0,X] = \mu_0 = \beta_0 + \gamma^{\top}X_i$$
 
-and $$E[Y_1|X] = E[Y|D=1,X] = \beta_0 + \beta_1 + \gamma^{\top}X_i$$
+and $$E[Y_1|X] = E[Y|D=1,X] = \mu_1 = \beta_0 + \beta_1 + \gamma^{\top}X_i$$
 
 . . .
 
-What are we assuming about the treatment effect? What are we assuming about the potential outcomes?
+What are we assuming about the treatment effect? What are we assuming about the potential outcomes? Are those assumptions sensible?
 
-## Imputation
+## Regression: use it for imputation!
 
-One way of making use of models that is less sensitive to the specification of a single coefficient is to use the model for imputation
+One way of making use of models that is less sensitive to the specification of a single coefficient is to use the model for imputation.
 
-* Use the model to predict the potential outcomes, and then calculate the difference of interest
+* Use the model(s) to predict the potential outcomes, and then calculate the difference of interest
 
 * For inference, use the bootstrap
 
 In epidemiology, this is known as g-computation ("g" stands for "generalized")
 
 This works incredibly well, above and beyond what looking at a single coefficient would give you
+
+Even more, this can be paired with flexible machine learning approaches, going beyond linear regression models
 
 # Augmented estimators {background-color="#E9004C"}
 
@@ -338,7 +420,27 @@ Can we get the best of both worlds? Yes, we can!
 
 Combine balancing (weighting) with outcome modeling (regression) in a single estimator: augmented IPW
 
-This has the property of **doubly robustness**: the model with be consistent for the treatment effect if either (1) the outcome model or, (2) the treatment model, are well specified
+$$
+\hat{\tau}_{AIPW} = \frac{1}{n}\sum_{i=1}^n \Big( \hat{\mu}_1(X_i) - \hat{\mu}_0 (X_i)
+$$
+
+$$
++ D_i \frac{Y_i - \hat{\mu}_1 (X_i)}{\hat{e}(X_i)} - (1-D_i)\frac{Y_i - \hat{\mu}_0(X_i)}{1-\hat{e}(X_i)} \Big)
+$$
+
+
+## Augmented IPW
+
+
+This has the property of **doubly robustness** (DR): the model with be consistent for the treatment effect if either 
+
+1) the outcome model or, 
+
+2) the treatment model, are well specified
+
+. . .
+
+DR can also be interpreted as multiplicative errors approach: you will get closer to the truth (and *faster*) if you combine two not-perfect models than betting everyting to a single model.
 
 . . .
 
