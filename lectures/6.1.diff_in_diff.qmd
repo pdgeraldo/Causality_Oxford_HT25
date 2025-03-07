@@ -1,0 +1,289 @@
+---
+title: "Difference-in-differences"
+subtitle: "(and a bit beyond)" 
+author: "Pablo Geraldo Bastías"
+logo: "https://fundit.fr/sites/default/files/styles/max_650x650/public/institutions/capture-decran-2023-07-07-162216.png?itok=1CkwlJEu"
+include-in-header:
+  - text: |
+      <style>
+      .reveal .slide-logo {
+        max-height: unset;
+        height: 100px;
+      }
+      </style>
+footer: "Difference-in-differences"
+date: 03/03/2025
+date-format: long
+format: 
+  revealjs:
+    #theme: simple
+    width: 1600
+    height: 900
+    transition: slide
+    slide-number: c/t
+    chalkboard: true
+    auto-stretch: false
+callout-appearance: minimal
+---
+
+# Outline {background-color="#17a091"}
+
+\newcommand\indep{\perp\!\!\!\perp}
+\newcommand\nindep{\not\!\perp\!\!\!\perp}
+
+
+##
+
+* Classical difference-in-differences
+
+  - Estimand
+  - Assumptions
+  - TWFE estimation
+  
+* Problems with TWFE
+
+  - Time heterogeneity
+  - Unit heterogeneity
+  - Bias decomposition
+  
+* Extensions and alternatives
+
+  - Beyond 2x2 (staggered adoption)
+  - Alternative estimators
+  - Synthetic Control, Matrix Completion, Synthetic diff-in-diff
+  
+# Classical diff-in-diff {background-color="#17a091"}
+
+## Motivating example
+
+[Card and Krueger, 1994](https://davidcard.berkeley.edu/papers/njmin-aer.pdf)
+
+![](img\card_krueger_1994.png)
+
+## Basic ingredients
+
+The simplest difference-in-differences requires information from two groups (treated vs control), in two time periods (pre-treatment for everyone vs post-treatment for the exposed group)
+
+The basic idea is to use repeated observations over time to adjust for baseline differences between groups, and temporal trends. 
+
+(Usually described as accounting for "time invariant unobserved confounding")
+
+Our target quantity is the average treatment effect on the treated in the post-exposure period:
+
+$$
+E[Y_{1,post}|D=1] - E[Y_{0,post}|D=1]
+$$
+
+## Missing potential outcome
+
+$$
+E[\color{blue}{Y_{1,post}|D=1}] - E[\color{red}{Y_{0,post}|D=1}]
+$$
+
+It is easy to notice that:
+
+* Assuming consistency (SUTVA), the blue term can be [directly observed]{style="color:blue"}
+
+* However, the red term is [missing]{style="color:red"}! We need candidates to fill in this empty cell
+
+## Candidate comparisons
+
+Let's check some candidates to fill in for $$\color{red}{E[Y_{0,post}|D=1]}$$
+
+(Recall that we have our data in a 2x2 matrix)
+
+|    |      $D=0$      |  $D=1$ |
+|----------|:-------------:|------:|
+| $T=pre$ |  $\color{grey}{Y_{0,pre}|D=0}$ | $\color{grey}{Y_{0,pre}|D=1}$ |
+| $T=post$ |    $\color{grey}{Y_{0,post}|D=0}$   |  $\color{blue}{Y_{1,post}|D=1}$  |
+
+
+## Candidate comparisons
+
+Let's check some candidates to fill in for $$\color{red}{E[Y_{0,post}|D=1]}$$
+
+(Recall that we have our data in a 2x2 matrix)
+
+|    |      $D=0$      |  $D=1$ |
+|----------|:-------------:|------:|
+| $T=pre$ |  $\color{grey}{Y_{0,pre}|D=0}$ | $\color{grey}{Y_{0,pre}|D=1}$ |
+| $T=post$ |    $\color{red}{Y_{0,post}|D=0}$   |  $\color{blue}{Y_{1,post}|D=1}$  |
+
+
+## Candidate comparisons
+
+Let's check some candidates to fill in for $$\color{red}{E[Y_{0,post}|D=1]}$$
+
+(Recall that we have our data in a 2x2 matrix)
+
+|    |      $D=0$      |  $D=1$ |
+|----------|:-------------:|------:|
+| $T=pre$ |  $\color{grey}{Y_{0,pre}|D=0}$ | $\color{red}{Y_{0,pre}|D=1}$ |
+| $T=post$ |    $\color{grey}{Y_{0,post}|D=0}$   |  $\color{blue}{Y_{1,post}|D=1}$  |
+
+## Candidate comparisons
+
+Let's check some candidates to fill in for $$\color{red}{E[Y_{0,post}|D=1]}$$
+
+(Recall that we have our data in a 2x2 matrix)
+
+|    |      $D=0$      |  $D=1$ |
+|----------|:-------------:|------:|
+| $T=pre$ |  $\color{red}{Y_{0,pre}|D=0}$ | $\color{red}{Y_{0,pre}|D=1}$ |
+| $T=post$ |    $\color{red}{Y_{0,post}|D=0}$   |  $\color{blue}{Y_{1,post}|D=1}$  |
+
+
+## Candidate estimator
+
+We can use the 2x2 matrix to combine information across groups and time periods:
+
+$$
+\delta = \big(E[Y|D=1,Post] - E[Y|D=1, Pre] \big) - \big(E[Y|D=0,Post] - E[Y|D=0, Pre] \big)
+$$
+
+By consistency, we can write
+
+$$
+\delta = \big(E[Y_1|D=1,Post] - E[Y_0|D=1,Pre] \big) - \big(E[Y_0|D=0,Post] - E[Y_0|D=0,Pre] \big)
+$$
+
+## Sources of bias
+
+
+Now, we can add zero
+
+$$
+\delta = \big(E[Y_1|D=1,Post] - E[Y_0|D=1,Pre] \big) - \big(E[Y_0|D=0,Post] - E[Y_0|D=0,Pre] \big)
+$$ 
+
+$$
++ \color{red}{E[Y_0|D=1, Post] -E[Y_0|D=1, Post]}
+$$
+Recombining the terms, we get:
+
+$$
+\delta = \underbrace{E[Y_1|D=1,Post] - \color{red}{E[Y_0|D=1,Post]}}_{ATT}
+$$
+
+$$
++ \underbrace{\big(\color{red}{E[Y_0|D=1,Post]} - E[Y_0|D=1,Pre]\big) - \big(E[Y_0|D=0,Post] - E[Y_0|D=0,Pre]\big)}_{\text{Bias due to non-parallel trends}}
+$$
+
+
+## Identification assumptions
+
+Therefore, the identification assumptions we need for the Diff-in-diff estimator to be consistent is called *parallel trends*
+
+$$
+E(\Delta Y_0|D=1) = E(\Delta Y_0|D=0)
+$$
+
+Or, in a maybe more familiar notation, 
+
+$$
+\Delta Y_0 \indep D
+$$
+
+
+## Identification assumptions
+
+Therefore, the identification assumptions we need for the Diff-in-diff estimator to be consistent is called *parallel trends*
+
+$$
+E(\Delta Y_0|D=1) = E(\Delta Y_0|D=0)
+$$
+
+Or, in a maybe more familiar notation, 
+
+$$
+\Delta Y_0 \indep D
+$$
+
+As with other identification assumptions, parallel trends is an unverifiable assumption! Why???
+
+. . .
+
+* It's an assumption about counterfactual variables!
+
+* It's not equivalent to "pre-trajectories" 
+
+* However, checking for possible pre-trends is a common and good practice! ("event study")
+
+
+## Example: Minimum wage
+
+[From Mixtape](https://mixtape.scunning.com/09-difference_in_differences)
+
+
+![](img\card_krueger_mixtape.png)
+
+
+## Example: Medicaid and mortality
+
+[Miller, Johnson and Wherry](https://www.nber.org/system/files/working_papers/w26081/w26081.pdf)
+
+![](img\medicaid_a.png)
+
+## Example: Medicaid and mortality
+
+[Miller, Johnson and Wherry](https://www.nber.org/system/files/working_papers/w26081/w26081.pdf)
+
+![](img\medicaid_b.png)
+
+## Identification assumptions
+
+Additionally, and similarly to other strategies, we need extra assumptions:
+
+* SUTVA or consistency
+
+* No anticipation
+
+And, as usual, the critical question is *why should we believe that these assumptions are reasonable?*
+
+* What do we understand about the assignment process?
+
+* What do we understand about the outcome process?
+
+* What is the role of covariates in our analysis, if any?
+
+
+
+## TWFE estimation
+
+The difference-in-difference estimator can be easily written in a regression form:
+
+$$
+E(Y) = \alpha + \gamma D + \lambda T + \delta (D \times T)
+$$
+
+Where,
+
+$\alpha$: untreated, pre period
+
+$\alpha + \gamma$: (not yet) treated, pre period
+
+$\alpha + \lambda$: untreated, post period
+
+$\alpha + \gamma + \lambda + \delta$: treated, post period
+
+. . .
+
+This is known as the two-way fixed effect model
+
+
+# Problems with TWFE {background-color="#17a091"}
+
+It is tempting to apply the same logic and extend the TWFE model for multiple time period and multiple groups.
+
+But not so fast!
+
+Now we know this bring it own (many) issues:
+
+* When treatment status is non-absorbing
+
+* When treatment effect is heterogeneous across units and time
+
+* Think about design vs model-based arguments
+
+
+# Extensions and alternatives {background-color="#17a091"}
