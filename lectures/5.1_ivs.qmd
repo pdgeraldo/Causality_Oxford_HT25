@@ -162,10 +162,10 @@ $$
 (Z \nindep D)_G
 $$
 
-* The instrument $Z$ and the outcome $Y$ are $d-$separated in the interventional DAG where we $do(z)$, $G_{\bar{X}}$
+* The instrument $Z$ and the outcome $Y$ are $d-$separated in the interventional DAG where we $do(d)$, $G_{\overline{D}}$
 
 $$
-(Z \indep Y)_{G_{\bar{X}}}
+(Z \indep Y)_{G_{\overline{D}}}
 $$
 
 ## IV bounds
