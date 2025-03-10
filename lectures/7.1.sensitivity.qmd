@@ -1,0 +1,208 @@
+---
+title: "Sensitivity analysis"
+author: "Pablo Geraldo Bastías"
+logo: "https://fundit.fr/sites/default/files/styles/max_650x650/public/institutions/capture-decran-2023-07-07-162216.png?itok=1CkwlJEu"
+include-in-header:
+  - text: |
+      <style>
+      .reveal .slide-logo {
+        max-height: unset;
+        height: 100px;
+      }
+      </style>
+footer: "Sensitivity analysis"
+date: 03/10/2025
+date-format: long
+format: 
+  revealjs:
+    #theme: simple
+    width: 1600
+    height: 900
+    transition: slide
+    slide-number: c/t
+    chalkboard: true
+    auto-stretch: false
+callout-appearance: minimal
+---
+
+# Outline {background-color="#17a091"}
+
+\newcommand\indep{\perp\!\!\!\perp}
+\newcommand\nindep{\not\!\perp\!\!\!\perp}
+
+
+## Roadmap
+
+* [Conceptual clarification]{.fragment .highlight-blue} 
+
+  [robustness vs sensitivity]{.fragment .fade-in-then-out}
+
+* [Be careful when conditioning]{.fragment .highlight-blue}
+
+  [Inducing bias (M-bias)]{.fragment .fade-in-then-out}
+  [Amplifying bias (Z-bias)]{.fragment .fade-in-then-out}
+
+* [Assessing unconfoundedness]{.fragment .highlight-blue}
+  
+  [Negative outcomes]{.fragment .fade-in-then-out}
+  [Negative treatments]{.fragment .fade-in-then-out}
+  
+* [Quantitative bias analysis]{.fragment .highlight-blue}
+
+  [Assumption-free bounds (Manski)]{.fragment .fade-in-then-out}
+  [Worst-case bounds (Rosenbaum)]{.fragment .fade-in-then-out}
+  
+  [E-value (VanderWeele and Peng)]{.fragment .fade-in-then-out}
+  [R-value (Cinelli and Hazlett)]{.fragment .fade-in-then-out}
+  
+  [A general framework for bias analysis (with `autobounds`) (Duarte)]{.fragment .fade-in-then-out}
+  
+* [There is so much more out there!]{.fragment .highlight-blue}
+
+  
+# What is sensitivity analysis? {background-color="#17a091"}
+
+## 
+
+:::{.r-stack}
+![](img/sens_9billionregs.png){.fragment width="600" height="450"}
+
+![](img/sens_manyresearchers.png){.fragment width="600" height="600"}
+
+![](img/sens_forkingpaths.png){.fragment width="650" height="500"}
+:::
+
+## What to do with our assumptions?
+
+During this course, we have seen that causal inference with observational data relies on [untestable assumptions]{.fragment .highlight-red}. But should we simply take them at face value?
+
+In applied research, it is common to *"put to test"* one's approach and see how our results and findings change as a function of our decisions
+
+. . .
+
+  - Traditionally, a bunch of "robustness checks" relegated to the appendix
+  
+. . .
+
+Researchers and methodologists are now paying increasing attention to this problem, and bringing it to the forefront. 
+
+We need ways to measure the strength of the evidence our studies provide, accounting for the uncertainty in the assumptions we are invoking for our analyses!
+
+
+## Sensitivity vs Robustness
+
+Sensitivity and robustness are frequently used interchangeably, referring to how results would change (sensitivity) or not (robustness) when we make different analytical decisions.
+
+I believe is good to separate two things:
+
+* How *identification* results depend on *untestable* assumptions about the data generating process
+
+* How *estimation* results depend on *analytical* or *statistical* decisions, like data recoding and model specification
+
+. . .
+
+To the first, we will call [*sensitivity*]{.fragment .highlight-blue}, i.e., how our results change as we relax or negate assumptions about potential outcomes or causal relationships
+
+To the second, we will call [*robustness*]{.fragment .highlight-green}, i.e., how our results change as we modify the ways in which we analyse the data
+
+
+# Be careful when conditioning {background-color="#17a091"}
+
+## Recall unconfoundedness
+
+We described the unconfoundedness assumption as
+
+$$
+Y_d \indep D | X
+$$
+
+which implies that
+
+$$
+P(Y_1|D=1,X) = P(Y_1|D=0,X)
+$$
+
+$$
+P(Y_0|D=1,X) = P(Y_1|D=0,X)
+$$
+
+Given the missing potential outcomes, we cannot directly "test" these assumptions, so we have to rely on indirect evaluations to put such assumptions to test.
+
+:::aside
+What follows is based on Ding (2024)
+::: 
+
+
+## Inducing bias through conditioning (M-bias)
+
+
+
+
+## Amplifying bias through conditioning (Z-bias)
+
+# Assessing unconfoundedness {background-color="#17a091"}
+
+## Negative outcomes
+
+One possible way to assess if the unconfoundedness assumption holds is to assume we have a negative outcome ($Y^n$), similar in confounding structure to the outcome of interest ($Y$), but we know the treatment effect for $Y^n$.
+
+A particular case, commonly invoked, is when we know $\tau(D \rightarrow Y^n) =0$
+
+![](img/sens_negativeoutcome.png)
+
+. . . 
+
+**Examples**: 
+
+- Cornfield et al. (1959) using $Smoking \rightarrow CarAccidents$
+
+- Imbens and Rubin (2015) using $Exposure \rightarrow Y_{t-1}$
+
+- Jackson et al. (2016) using $FluVaccine \rightarrow Health_{pre-season}$
+
+## Negative treatments
+
+Another way to assess if the uncounfoundedness assumption holds is to assume we have  negative exposure ($D^n$), similar in confounding structure to the outcome of interest ($Y$), but we know the treatment effect of $D^n$
+
+A particular case, commonly invoked, is when we know $\tau(D^n \rightarrow Y) = 0$
+
+![](img/sens_negativetreatment.png)
+
+. . . 
+
+**Examples**:
+
+- Sanderson et al. (2017) using $PaternalExposure \rightarrow Newborn < MaternalExposure \rightarrow Newborn$
+
+## What have you notice?
+
+All of these examples are highly non-trivial!
+
+Applying these strategies require knowledge about the causal process (and causal graph), that we may not have.
+
+# Quantitative bias analysis {background-color="#17a091"}
+
+## Sensitivity Analysis (QBA)
+
+A different approach is to, instead of trying to find a (lateral) "test" for our assumptions, simulate violations of such assumptions to a certain degree.
+
+Obtaining a (range of) "bias-corrected" estimates gives us an idea of how fragile our inferences are.
+
+Similar to the case with negative outcomes and negative treatments, we generally require to impose additional auxiliary assumptions for these analyses to work, or at least for being able to provide them with a useful interpretation.
+
+There are two different ways of doing this:
+
+* Start with the weakest possible assumptions (or no assumptions at all), and incrementally increase how strict your assumptions are: bounding analysis
+
+* Start with the strongest possible assumption (you're willing to defend), and incrementally relax it until the estimated effect vanishes: sensitivity analysis
+
+## Assumption-free bounds (Manski)
+
+
+
+## Worst-case bound (Rosenbaum)
+
+## E(vidence)-value (VanderWeele and Peng)
+
+## R(obustness)-value (Cinelli and Hazlett)
+
