@@ -123,7 +123,7 @@ P(Y_1|D=1,X) = P(Y_1|D=0,X)
 $$
 
 $$
-P(Y_0|D=1,X) = P(Y_1|D=0,X)
+P(Y_0|D=1,X) = P(Y_0|D=0,X)
 $$
 
 Given the missing potential outcomes, we cannot directly "test" these assumptions, so we have to rely on indirect evaluations to put such assumptions to test.
@@ -135,10 +135,28 @@ What follows is based on Ding (2024)
 
 ## Inducing bias through conditioning (M-bias)
 
+![](img/sens_mbias.png)
 
+. . .
+
+In this example, it is easy to see that the unconditional association between the treatment $Z$ and outcome $Y$ is zero.
+
+Now, for simplicity, interpret this graph as a path diagram. Then we will have that the regression $\beta_{(ZY|X)}$ is proportional to the (product of the) paths $Z \leftarrow U_1 \times U_1 \rightarrow X \times X \leftarrow U_2 \times U_2 \rightarrow Y$, which is not zero.
 
 
 ## Amplifying bias through conditioning (Z-bias)
+
+![](img/sens_zbias.png)
+
+. . .
+
+**Intuition**: The treatment is a function of $(X,U)$. Conditioning by covariates $X$, the treatment becomes a function solely of $U$ and random errors. So, after conditioning, the treatment becomes "less random", with $U$ being even more important to determine who gets the treatment.
+
+In the linear model case:
+
+* The unadjusted estimator has bias $\frac{bc}{a^2 + b^2 +1}$
+
+* The adjusted estimator has bias $\frac{bc}{b^2 + 1}$
 
 # Assessing unconfoundedness {background-color="#17a091"}
 
@@ -192,17 +210,538 @@ Similar to the case with negative outcomes and negative treatments, we generally
 
 There are two different ways of doing this:
 
-* Start with the weakest possible assumptions (or no assumptions at all), and incrementally increase how strict your assumptions are: bounding analysis
+* Start with the weakest possible assumptions (or no assumptions at all), and incrementally increase how strict your assumptions are: [bounding analysis]{.fragment .highlight-red}
 
-* Start with the strongest possible assumption (you're willing to defend), and incrementally relax it until the estimated effect vanishes: sensitivity analysis
+* Start with the strongest possible assumption (you're willing to defend), and incrementally relax it until the estimated effect vanishes: [sensitivity analysis]{.fragment .highlight-red}
 
 ## Assumption-free bounds (Manski)
+
+Recall that we can decompose $\tau = E(Y_1 - Y_0)$ as
+
+$$
+\tau = \{E(Y|D=1) P(D=1) + E(Y_1|D=0)P(D=0)\}
+$$
+
+$$
+- \{E(Y_0|D=1) P(D=1) + E(Y|D=0)P(D=0)\}
+$$
+
+Which quantities are observed and which are missing?
+
+. . . 
+
+Manski bounds would use only information on the *range* of the missing variable to calculate lower and upper bounds for the treatment effect:
+
+For $E(Y_1)$ the lower bound is: $Y(Y|D=1)P(D=1) + \underline{y}P(D=0)$
+
+and upper bound: $Y(Y|D=1)P(D=1) + \overline{y}P(D=0)$
+
+* The length of these bounds is $\overline{y} - \underline{y}$, which is half of the a priori bounds 
+
+## E(vidence)-value (VanderWeele and Peng)
+
+Let's assume the existence of an unobserved confounder $U$ that, if included, would make the exchangeability hold, such that $Y_d \nindep D|X$, but
+
+$$
+Y_d \indep D|X,U
+$$
+
+VanderWeele and Peng define two sensitivity parameters and show that, for the risk ratio, they bound the strength required by unobserved confounding to account for an observed effect:
+
+$$
+RR_{DU|x} = \frac{P(U=1|D=1,x)}{P(U=1|D=0,x)}
+$$
+
+$$
+RR_{UY|x} = \frac{P(Y=1|U=1,x)}{P(Y=1|U=0,x)}
+$$
+
+## E-value (cont)
+
+With observed conditional risk ratio $RR_{DY|x}^{obs}$, the E-value is
+
+$$
+RR_{DY|x}^{obs} + \sqrt{RR_{DY|x}^{obs} \times (RR_{DY|x}^{obs} - 1)}
+$$
 
 
 
 ## Worst-case bound (Rosenbaum)
 
-## E(vidence)-value (VanderWeele and Peng)
+For matched studies, Rosenbaum (2002) proposed bounds based on a single sensitivity parameter: $\Gamma \geq 1$ measuring departures from unconfoundedness (what Rosenbaum calls "hidden bias")
+
+Under unconfoundedness, two observationally equivalent units with $X_i=X_j$ have the same propensity score. Now, let's assume a binary unobserved confounder $U$ affecting their odds of being treated
+
+$$
+\frac{1}{\Gamma} \leq \frac{\pi_i(1-\pi_j)}{(1-\pi_i)} \leq \Gamma
+$$
+
+* For example: $\Gamma = 2$ means that the $i$ unit has twice the odds of being treated as unit $j$. 
+
+* Rosenbaum bounds assume an *infinite* effect on the outcome, but that can be relatex (two parameters version with $\Gamma$ and $\Lambda$)
+
+
+## OVB structure {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {.left style="margin-top: 200px;"}
+$$Y_i \color{white}{=  \alpha + {\beta} X_i + \gamma W_i + \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yonly.svg)
+
+:::
+
+:::
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha \color{white}{+ {\beta} X_i + \gamma W_i + \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yonly.svg)
+
+:::
+
+:::
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \color{blue}{\beta} X_i \color{white}{+ \gamma W_i + \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yx_beta.svg)
+:::
+
+:::
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \beta X_i \color{white}{+ \gamma W_i + \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_beta.svg)
+:::
+
+:::
+
+
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \beta X_i + \color{red}{\gamma} W_i \color{white}{+ \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_gamma.svg)
+:::
+
+:::
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \beta X_i + \color{red}{\gamma} W_i \color{white}{+ \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_block.svg)
+:::
+
+:::
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + \beta X_i + \color{red}{\gamma} W_i \color{white}{+ \epsilon_i}$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_block2.svg)
+:::
+
+:::
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 200px;"}
+$$Y_i =  \alpha + {\beta} X_i + \gamma W_i + \epsilon_i$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxwe_beta.svg)
+
+
+:::
+
+:::
+
+::: {.fragment}
+$\text{corr}(X_i; \epsilon_i) = 0$
+:::
+
+:::{.fragment}
+$X \rightarrow \dots \leftarrow \epsilon$ is $d-$separated
+:::
+
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \alpha + \beta X_i + \gamma W_i + \epsilon_i}$$
+
+$$Y_i =  \zeta + \tilde{\beta} X_i + u_i$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu_tilde.svg)
+:::
+
+:::
+
+
+
+
+
+
+## OVB {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \alpha + \beta X_i +  \color{red}{\gamma W_i + \epsilon_i}}$$
+
+$$Y_i =  \zeta + \tilde{\beta} X_i + \color{red}{u_i}$$
+
+
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2_tilde.svg)
+:::
+
+:::
+
+
+:::{.fragment}
+$\text{corr}(X_i ; u_i) \neq 0$
+:::
+
+:::{.fragment}
+$X \rightarrow u$ is $d-$connected
+:::
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \color{red}{\tilde{\beta}} X_i + u_i}$$
+
+$$
+\color{red}{\tilde{\beta}} = \frac{\text{Cov}(X_i , Y_i)}{\text{Var}(X_i)}
+$$
+
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2.svg)
+:::
+
+:::
+
+
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \tilde{\beta} X_i + u_i}$$
+
+$$
+\tilde{\beta} = \frac{\text{Cov}(X_i , \color{green}{Y_i})}{\text{Var}(X_i)}
+$$
+
+$$
+= \frac{\text{Cov}(X_i, \color{green}{\alpha + \beta X_i + \gamma W_i + \epsilon_i})}{\text{Var}(X_i)}
+$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2.svg)
+:::
+
+:::
+
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \tilde{\beta} X_i + u_i}$$
+
+$$
+\tilde{\beta} = \frac{\text{Cov}(X_i , Y_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \frac{\color{green}{\text{Cov}(X_i}, \alpha + \color{blue}{\beta} X_i + \color{red}{\gamma} \color{green}{W_i} + \epsilon_i)}{\color{green}{\text{Var}(X_i)}}
+$$
+
+$$
+= \color{blue}{\beta} + \underbrace{\color{red}{\gamma} \times \color{green}{\frac{\text{Cov}(X_i,W_i)}{\text{Var}(X_i)}}}_{\text{Bias}}
+$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2.svg)
+:::
+
+:::
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \color{red}{\tilde{\beta}} X_i + u_i}$$
+
+$$
+\tilde{\beta} = \frac{\text{Cov}(X_i , Y_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \frac{\text{Cov}(X_i, \alpha + \beta X_i + \gamma W_i + \epsilon_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \color{blue}{\beta} + \underbrace{\color{red}{\gamma}}_{\text{Impact}} \times \underbrace{\color{green}{\delta}}_{\text{Imbalance}}
+$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxu2.svg)
+:::
+
+:::
+
+
+
+
+## The OBV formula  {auto-animate=true}
+
+::: {.columns}
+
+::: {.column width="50%"}
+***Regression***
+
+::: {style="margin-top: 100px;"}
+$$\color{grey}{Y_i =  \zeta + \color{red}{\tilde{\beta}} X_i + u_i}$$
+
+$$
+\tilde{\beta} = \frac{\text{Cov}(X_i , Y_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \frac{\text{Cov}(X_i, \alpha + \beta X_i + \gamma W_i + \epsilon_i)}{\text{Var}(X_i)}
+$$
+
+$$
+= \color{blue}{\beta} + \underbrace{\color{red}{\gamma}}_{\text{Impact}} \times \underbrace{\color{green}{\delta}}_{\text{Imbalance}}
+$$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+***Path diagram***
+
+![](img/dag_yxw_delta.svg)
+:::
+
+:::
+
 
 ## R(obustness)-value (Cinelli and Hazlett)
+
+![](img/sens_cinellihazlett.png){.fragment .center}
+
+* **RV**: What percentage of the *residual* variance in $Y$ and $D$ would need to be explained by the omitted variable to account for the effect?
+
+* $R^2_{Y \sim D|X}$: if the omitted confounder explains 100\% of the residual variance in the outcome, how much residual variance in the treatment should it explain?
+
+## R(obustness)-value (Cinelli and Hazlett)
+
+![](img/ovb_cinelli_hazlett.png){.fragment .center}
 
