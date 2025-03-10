@@ -1,6 +1,6 @@
 ---
 title: "Problem Set 2"
-author: "Your name here"
+author: "Your id here"
 date: last-modified
 format: 
   pdf:
